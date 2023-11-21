@@ -9,12 +9,20 @@ public class CommandHelp extends Command{
 	}
 	
 	public boolean execute(String[] args) {
-		System.out.println("Hello ! I'm the help command ! Here are the commands you can type : ");
+		String s = "";
+		s += "\nGlad you asked some help ! Here is some informations on available commands\n";
+		s += "General usage of commands is : COMMAND arg1 arg2 ...\n \n";
+		s += "Available commands : \n";
 		for (Entry<String, Command> entry : CommandHandler.COMMANDS.entrySet()) {
 			String key = entry.getKey();
 			Command value = entry.getValue();
 			
+			s += key + " : " +value.DESCRIPTION;
+			s += "\n";
+			
 		}
+		
+		System.out.print(s);
 		return true;
 	}
 
