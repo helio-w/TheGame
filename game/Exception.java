@@ -1,4 +1,4 @@
-package thegame;
+package game;
 
 public class Exception {
     

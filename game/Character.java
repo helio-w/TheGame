@@ -1,4 +1,4 @@
-package thegame;
+package game;
 
 public abstract class Character{
     public final String NAME;           // Name of the caracter

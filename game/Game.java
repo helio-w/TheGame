@@ -1,4 +1,4 @@
-package thegame;
+package game;
 
 public class Game{
     // There's only one instance of a game while the program is running
