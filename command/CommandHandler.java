@@ -1,47 +1,68 @@
 package command;
 
+import game.GameHandler;
 import java.util.HashMap;
 import java.util.Scanner;
-
 public class CommandHandler {
 	
-	protected final HashMap<String, Command> COMMANDS;
+	public static final HashMap<String, Command> COMMANDS = new HashMap<String, Command>();
+	private static CommandHandler instance;
+	
 	
 	/*
 	 * 		***** Constructors *****
 	 * */
 	
-	// Constructor for custom command list
-	public CommandHandler(HashMap<String, Command> hsmp) {
-		this.COMMANDS = hsmp;
+	// Constructor for the game
+	// Commands should be added here 
+	private CommandHandler() {
+		Command cmdHelp = new CommandHelp();
+		Command cmdQuit = new CommandQuit();
+		
+		
+		// Adding these commands to the hashmap of command
+		CommandHandler.COMMANDS.put("HELP", cmdHelp);
+		CommandHandler.COMMANDS.put("QUIT", cmdQuit);
 	}
 	
-	
-	public CommandHandler() {
-		this.COMMANDS = new HashMap<String, Command>();
-	}
 	
 	/*
 	 * 		***** Methods *****
 	 */
 	
-
-	public void execute(String command) throws Exception{
-		try {
-			String[] commandList;
-			// Slipting args
-			commandList = command.split(" "); 
-			// Retrieving command instance corresponding to input
-			if(COMMANDS.containsKey(commandList[0])) {
-				Command myCmd = COMMANDS.get(commandList[0]);
-				myCmd.execute(commandList);
-			} else {
-				System.out.println("Error execute : command not found");
-			}
-		} catch(Exception e) {
-			System.out.println(e.toString());
+	public static CommandHandler getInstance() {
+		if (CommandHandler.instance == null) {
+			CommandHandler.instance = new CommandHandler();
 		}
 		
+		return CommandHandler.instance;
+	}
+	
+	public void commandParser() {
+		GameHandler theGame = GameHandler.getInstance();
+		Scanner scan = new Scanner(System.in);
+		while(!(theGame.isFinished())){
+			System.out.print("I'm ready ! Please give me a command : ");
+			String command = scan.nextLine();
+			this.execute(command);
+		}
+		scan.close();
+	}
+	
+	
+	public boolean execute(String command){
+		String[] commandList;
+		// Slipting args
+		commandList = command.split(" "); 
+		// Retrieving command instance corresponding to input
+		if(CommandHandler.COMMANDS.containsKey(commandList[0].toUpperCase())) {
+			Command myCmd = CommandHandler.COMMANDS.get(commandList[0].toUpperCase());
+			myCmd.execute(commandList);
+			return true;
+		} else {
+			Utils.printErr("Error while executing the command : command not found");
+			return false;
+		}
 	}
 
 	
@@ -50,30 +71,9 @@ public class CommandHandler {
 	 * 		***** Main for further testing *****
 	 * */
 	
-	public static void main(String[] args) throws Exception {
-		// System.out.println("Prout");
-		
-		// Definition of commands
-		CommandHelp cmdHelp = new CommandHelp();
-		
-		HashMap<String, Command> myHsmp = new HashMap<String, Command>();
-		
-		myHsmp.put("help", cmdHelp);
-		
-		
-		
-		CommandHandler comHand = new CommandHandler(myHsmp);
-		
-		Scanner scan = new Scanner(System.in);
-		System.out.print("It seems I'm ready ! Please give me a command : ");
-		String command = scan.nextLine();
-		try {
-			comHand.execute(command);
-		}catch(Exception e) {
-			System.out.println(e.toString());
-		}
-		
-		scan.close();
+	public static void main(String[] args) {
+		CommandHandler cmdHdl = CommandHandler.getInstance();
+		cmdHdl.commandParser();
 		
 	}
 }
