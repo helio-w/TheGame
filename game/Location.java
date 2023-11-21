@@ -1,15 +1,14 @@
 package game;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 
 public class Location{
     public final String NAME;
     public final String DESCRIPTION;
 
-    private List<Character> characs = new ArrayList<Character>();
-    private List<Exit> exits = new ArrayList<Exit>();
-    private List<Item> items = new ArrayList<Item>();
+    private HashMap<String, Character> characs = new HashMap<String, Character>();
+    private HashMap<String, Exit> exits = new HashMap<String, Exit>();
+    private HashMap<String, Item> items = new HashMap<String, Item>();
     
     public Location(String name, String desc){
         this.NAME = name;
@@ -18,7 +17,7 @@ public class Location{
 
     public void showExits(){
         System.out.print(this.NAME+" : \n");
-        for(Exit ex : exits){
+        for(Exit ex : exits.values()){
             System.out.println(ex);
         }
         System.out.println();
@@ -26,11 +25,11 @@ public class Location{
 
     public void addExit(Exit e){
         if(e.DEST != this){
-            this.exits.add(e);
+            this.exits.put(e.NAME, e);
         }
     }
 
-    public List<Exit> getExits(){
+    public HashMap<String, Exit> getExits(){
         return exits;
     }
 
@@ -42,7 +41,7 @@ public class Location{
         Location l4 = new Location("L4", "Sorties dispo : L3");
 
         Exit el1 = new Exit("el1", "Sortie vers L1", l1);
-        Exit el2 = new Exit("el2","Sortie vers L2", l2);
+        Exit el2 = new Exit("el2", "Sortie vers L2", l2);
         Exit el3 = new Exit("el3", "Sortie vers L3", l3);
         Exit el4 = new Exit("el4", "Sortie vers l4", l4);
 
