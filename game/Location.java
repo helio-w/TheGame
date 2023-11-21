@@ -7,7 +7,7 @@ public class Location{
     public final String NAME;
     public final String DESCRIPTION;
 
-    private List<Character> charac = new ArrayList<Character>();
+    private List<Character> characs = new ArrayList<Character>();
     private List<Exit> exits = new ArrayList<Exit>();
     private List<Item> items = new ArrayList<Item>();
     
