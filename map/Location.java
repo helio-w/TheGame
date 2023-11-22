@@ -1,4 +1,5 @@
-package game;
+package map;
+import objects.Item;
 
 import java.util.HashMap;
 

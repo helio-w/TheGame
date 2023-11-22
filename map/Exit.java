@@ -1,4 +1,4 @@
-package game;
+package map;
 
 public class Exit {
     public final String DESCRIPTION;

@@ -1,4 +1,4 @@
-package game;
+package map;
 
 public class ExitKey extends Exit{
     private boolean isLock;
@@ -12,4 +12,8 @@ public class ExitKey extends Exit{
         String lock = this.isLock?"YES":"NO"; //if isLoack then "YES" else "NO"
         return "Name : "+this.NAME+"\nDestination : "+this.DEST.NAME+"Lock : "+lock+"\nDescription :\n"+this.DESCRIPTION;
     }
+/* 
+    public openExit(){
+
+    }*/
 }
