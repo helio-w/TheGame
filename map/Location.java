@@ -44,6 +44,10 @@ public class Location{
         return characs;
     }
 
+    public HashMap<Integer, Item> getItems(){
+        return items;
+    }
+
     public static void main(String[] args){
         Location l1 = new Location("L1", "Sorties dispo : L2 et L3");
         Location l2 = new Location("L2", "Sorties dispo : L1 et L4");
@@ -70,6 +74,4 @@ public class Location{
 
         l4.addExit(e6, 1);
     }
-
-    
 }
