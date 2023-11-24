@@ -7,9 +7,9 @@ public class Location{
     public final String NAME;
     public final String DESCRIPTION;
 
-    private HashMap<String, Character> characs = new HashMap<String, Character>();
-    private HashMap<String, Exit> exits = new HashMap<String, Exit>();
-    private HashMap<String, Item> items = new HashMap<String, Item>();
+    private HashMap<Integer, Character> characs = new HashMap<Integer, Character>();
+    private HashMap<Integer, Exit> exits = new HashMap<Integer, Exit>();
+    private HashMap<Integer, Item> items = new HashMap<Integer, Item>();
     
     public Location(String name, String desc){
         this.NAME = name;
@@ -24,16 +24,22 @@ public class Location{
         System.out.println();
     }
 
-    public void addExit(Exit e){
+    public void addExit(Exit e, Integer id){
+        if(this.exits.containsKey(id)){
+            System.out.println("Error addExit : key already present");
+        }
         if(e.DEST != this){
-            this.exits.put(e.NAME, e);
+            this.exits.put(id, e);
         }
     }
 
-    public HashMap<String, Exit> getExits(){
+    public HashMap<Integer, Exit> getExits(){
         return exits;
     }
 
+    public HashMap<Integer, Character> getCharac(){
+        return characs;
+    }
 
     public static void main(String[] args){
         Location l1 = new Location("L1", "Sorties dispo : L2 et L3");
@@ -41,25 +47,7 @@ public class Location{
         Location l3 = new Location("L3", "Sporties dispo : L4");
         Location l4 = new Location("L4", "Sorties dispo : L3");
 
-        Exit el1 = new Exit("el1", "Sortie vers L1", l1);
-        Exit el2 = new Exit("el2", "Sortie vers L2", l2);
-        Exit el3 = new Exit("el3", "Sortie vers L3", l3);
-        Exit el4 = new Exit("el4", "Sortie vers l4", l4);
-
-        l1.addExit(el2);
-        l1.addExit(el3);
-
-        l2.addExit(el1);
-        l2.addExit(el4);
-
-        l3.addExit(el4);
-
-        l4.addExit(el3);
-
-        l1.showExits();
-        l2.showExits();
-        l3.showExits();
-        l4.showExits();
+        
     }
 
     
