@@ -31,11 +31,6 @@ public class Location{
         System.out.println();
     }
 
-    /**
-     * Add an exit to the Map of a location
-     * @param e
-     * @param name
-     */
     public void addExit(Exit e, String name){
         if(this.exits.containsKey(name)){
             System.out.println("Error addExit : exit name already present");
