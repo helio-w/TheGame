@@ -1,5 +1,6 @@
 package map;
 import objects.Item;
+import characters.Character;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -33,10 +34,10 @@ public class Location{
 
     public void addExit(Exit e, String name){
         if(this.exits.containsKey(name)){
-            System.out.println("Error addExit : exit name already present");
+            System.err.println("Error addExit : exit name already present");
         }
         if(e.LOC != this){
-            System.out.println("Error addExit : incorrect location of "+e.NAME);
+            System.err.println("Error addExit : incorrect location of "+e.NAME);
         }
         if(e.DEST != this){
             this.exits.put(name, e);
