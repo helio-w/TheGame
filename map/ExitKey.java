@@ -14,7 +14,7 @@ public class ExitKey extends Exit{
     @Override
     public String toString(){
         String lock = this.isLock?"YES":"NO"; //if isLoack then "YES" else "NO"
-        return "Name : "+this.NAME+"\nDestination : "+this.DEST.NAME+"Lock : "+lock+"\nDescription :\n"+this.DESCRIPTION;
+        return "Name : "+this.NAME+"\nDestination : "+this.DEST.NAME+"\nLock : "+lock+"\nDescription :\n"+this.DESCRIPTION;
     }
 /*
     public void open(){

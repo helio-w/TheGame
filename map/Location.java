@@ -88,7 +88,7 @@ public class Location{
         Location l3 = new Location("L3", "Sorties dispo : L4");
         Location l4 = new Location("L4", "Sorties dispo : L3");
 
-        l1.createExit("E1", "Sortie vers L2", l2);
+        l1.createExitKey("E1", "Sortie vers L2", l2, true, null);
         l1.createExit("E2", "Sortie vers L3", l3);
 
         l2.createExit("E1", "Sortie vers L1", l1);
@@ -97,5 +97,7 @@ public class Location{
         l3.createExit("E1", "Sortie vers L4", l4);
         
         l4.createExit("E1", "Sortie vers L3", l3);
+
+        l1.showExits();
     }
 }
