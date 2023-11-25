@@ -4,15 +4,15 @@ import java.util.ArrayList;
 import objects.Item;
 
 public class Player extends Character{
-    public ArrayList<Item> incentory = new ArrayList<Item>();
+    public ArrayList<Item> inventory = new ArrayList<Item>();
     public int attack = 1;
-    private int speed = 1;
+    //private int speed = 1;
 
 
     private static Player instance;
 
     private Player(String name){
-        super(name, 20);
+        super(name, 20, null); // TODO penser a mettre le joueur dans le première salle
     }
 
     /**
@@ -25,5 +25,9 @@ public class Player extends Character{
             instance = new Player(name);
         }
         return instance;
+    }
+
+    public void addItem(Item i){
+        this.inventory.add(i);
     }
 }
