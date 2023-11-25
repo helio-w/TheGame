@@ -82,6 +82,18 @@ public class Location{
         return items;
     }
 
+    /**
+     * Delete a location and its exits
+     * @param l : location to be deleted
+     */
+    public void deleteLoc(Location l){
+        for(Exit e : l.exits.values()){
+            l.exits.remove(e.NAME);
+            e = null;
+        }
+        l = null;
+    }
+
     public static void main(String[] args){
         Location l1 = new Location("L1", "Sorties dispo : L2 et L3");
         Location l2 = new Location("L2", "Sorties dispo : L1 et L4");
