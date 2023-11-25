@@ -6,7 +6,7 @@ public class ExitKey extends Exit{
     private final Item key;
     
     public ExitKey(String name, String desc, Location loc, Location dest, boolean lock, Item k){
-        super(name, desc, loc,dest);
+        super(name, desc, loc, dest);
         this.isLock = lock;
         this.key = k;
     }
