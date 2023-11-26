@@ -6,6 +6,13 @@ public class Exit {
     public final Location DEST;
     public final Location LOC;
 
+    /**
+     * Create a instance of Exit
+     * @param name : name of the exit
+     * @param desc : desciption of the exit
+     * @param loc : location of the exit
+     * @param dest : destination of the exit
+     */
     public Exit(String name, String desc, Location loc, Location dest){
         this.DESCRIPTION = desc;
         this.NAME = name;
@@ -14,6 +21,6 @@ public class Exit {
     }
 
     public String toString(){
-        return "Nom : "+this.NAME+"\nDestination : "+this.DEST.NAME+"\nDescription :\n"+this.DESCRIPTION;
+        return "\tNom : "+this.NAME+"\n\tDestination : "+this.DEST.NAME+"\n\tDescription :\n\t"+this.DESCRIPTION;
     }
 }
