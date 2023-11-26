@@ -1,6 +1,7 @@
 package map;
 import objects.Item;
 import characters.Character;
+import characters.Player;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -32,6 +33,11 @@ public class Location{
         System.out.println();
     }
 
+    /**
+     * Adds an exit to the HashMap exits of the Location
+     * @param e : instance of the exit
+     * @param name : name (key for the HashMap)
+     */
     public void addExit(Exit e, String name){
         if(this.exits.containsKey(name)){
             System.err.println("Error addExit : exit name already present");
@@ -74,6 +80,15 @@ public class Location{
         return characs;
     }
 
+    /**Display the characters in a location*/
+    public void showCharac(){
+        System.out.print(this.NAME+" : \n");
+        for(Character c : characs.values()){
+            System.out.println(c);
+        }
+        System.out.println();
+    }
+
     public Map<Integer, Item> getItems(){
         return items;
     }
@@ -91,21 +106,29 @@ public class Location{
     }
 
     public static void main(String[] args){
-        Location l1 = new Location("L1", "Sorties dispo : L2 et L3");
-        Location l2 = new Location("L2", "Sorties dispo : L1 et L4");
-        Location l3 = new Location("L3", "Sorties dispo : L4");
-        Location l4 = new Location("L4", "Sorties dispo : L3");
 
-        l1.createExitKey("E1", "Sortie vers L2", l2, true, null);
-        l1.createExit("E2", "Sortie vers L3", l3);
+        Item i = new Item("clé", "Clé pour ouvrir E1");
 
-        l2.createExit("E1", "Sortie vers L1", l1);
-        l2.createExit("E2", "Sortie vers L4", l4);
+        Location l1 = new Location("L1", "Sortie(s) dispo : L2");
+        Location l2 = new Location("L2", "Sortie(s) dispo : aucune");
 
-        l3.createExit("E1", "Sortie vers L4", l4);
+        Player p = Player.getPlayer("Hero", l1);
         
-        l4.createExit("E1", "Sortie vers L3", l3);
+        l1.createExitKey("E1", "Sortie vers L2", l2, true, i);
 
         l1.showExits();
+        l1.showCharac();
+        p.showLoc();
+
+        p.move("E1");
+        l1.showCharac();
+        p.showLoc();
+
+        p.addItem(i);
+
+        p.move("E1");
+        l1.showCharac();
+        l2.showCharac();
+        p.showLoc();
     }
 }
