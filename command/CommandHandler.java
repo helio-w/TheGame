@@ -1,6 +1,6 @@
 package command;
 
-import game.GameHandler;
+// import game.GameHandler;
 import java.util.HashMap;
 import java.util.Scanner;
 public class CommandHandler {
@@ -8,7 +8,8 @@ public class CommandHandler {
 	public static final HashMap<String, Command> COMMANDS = new HashMap<String, Command>();
 	private static CommandHandler instance;
 	
-	private GameHandler theGame = GameHandler.getInstance();
+	// private GameHandler theGame = GameHandler.getInstance();
+	private Scanner scan = new Scanner(System.in);
 
 	/*
 	 * 		***** Constructors *****
@@ -40,14 +41,13 @@ public class CommandHandler {
 	}
 	
 	public void commandParser() {
-		Scanner scan = new Scanner(System.in);
-		while(!theGame.isFinished()) {
-			System.out.print("-> ");
-			String command = scan.nextLine();
-			this.execute(command);
-		}
-		scan.close();
-		System.out.print("You either loose or quit the game ! Sayonara !");
+		System.out.print("~> ");
+		String command = this.scan.nextLine();
+		this.execute(command);
+	}
+	
+	public void closeScan() {
+		this.scan.close();
 	}
 	
 	

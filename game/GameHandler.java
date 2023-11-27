@@ -3,6 +3,7 @@ package game;
 import characters.*;
 import map.*;
 import java.util.ArrayList;
+import command.*;
 
 public class GameHandler {
 	private boolean isFinished = false;	
@@ -45,9 +46,11 @@ public class GameHandler {
 	// Methods
 	
 	public void startGame() {
+		CommandHandler cmdHdl = CommandHandler.getInstance();
 		while(!this.isFinished) {
-			
+			cmdHdl.commandParser();
 		}
+		cmdHdl.closeScan();
 		
 	}
 	
@@ -76,6 +79,7 @@ public class GameHandler {
 	 */
 	
 	public static void main(String[] args) {
-		
+		GameHandler theGame = GameHandler.getInstance();
+		theGame.startGame();
 	}
 }
