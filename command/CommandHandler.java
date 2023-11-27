@@ -41,11 +41,9 @@ public class CommandHandler {
 	public void commandParser() {
 		GameHandler theGame = GameHandler.getInstance();
 		Scanner scan = new Scanner(System.in);
-		while(!(theGame.isFinished())){
-			System.out.print("I'm ready ! Please give me a command : ");
-			String command = scan.nextLine();
-			this.execute(command);
-		}
+		System.out.print("I'm ready ! Please give me a command : ");
+		String command = scan.nextLine();
+		this.execute(command);
 		scan.close();
 	}
 	
@@ -72,8 +70,10 @@ public class CommandHandler {
 	 * */
 	
 	public static void main(String[] args) {
-		CommandHandler cmdHdl = CommandHandler.getInstance();
-		cmdHdl.commandParser();
+		GameHandler theGame = GameHandler.getInstance();
+		while(!theGame.isFinished()) {
+			
+		}
 		
 	}
 }
