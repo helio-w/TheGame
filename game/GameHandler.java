@@ -14,11 +14,7 @@ public class GameHandler {
 	
 	// Empty constructor private to avoid external creation of any other instance
 	private GameHandler() {
-		/*
-		 * 		Creating instance of player at the beginning of the game
-		 * */
-		
-		this.PLAYER = Player.getPlayer("Heros", null); 
+
 		
 		/*
 		 * 		Init of maps
@@ -28,6 +24,13 @@ public class GameHandler {
 		
 		// Adding Location to map list
 		this.map.add(startMap);
+		
+		
+		/*
+		 * 		Creating instance of player at the beginning of the game
+		 * */
+		
+		this.PLAYER = Player.getPlayer("Heros", startMap); 
 	}
 	
 	

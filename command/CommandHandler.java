@@ -8,7 +8,8 @@ public class CommandHandler {
 	public static final HashMap<String, Command> COMMANDS = new HashMap<String, Command>();
 	private static CommandHandler instance;
 	
-	
+	private GameHandler theGame = GameHandler.getInstance();
+
 	/*
 	 * 		***** Constructors *****
 	 * */
@@ -39,12 +40,14 @@ public class CommandHandler {
 	}
 	
 	public void commandParser() {
-		GameHandler theGame = GameHandler.getInstance();
 		Scanner scan = new Scanner(System.in);
-		System.out.print("I'm ready ! Please give me a command : ");
-		String command = scan.nextLine();
-		this.execute(command);
+		while(!theGame.isFinished()) {
+			System.out.print("-> ");
+			String command = scan.nextLine();
+			this.execute(command);
+		}
 		scan.close();
+		System.out.print("You either loose or quit the game ! Sayonara !");
 	}
 	
 	
@@ -70,10 +73,7 @@ public class CommandHandler {
 	 * */
 	
 	public static void main(String[] args) {
-		GameHandler theGame = GameHandler.getInstance();
-		while(!theGame.isFinished()) {
-			
-		}
-		
+		CommandHandler cmdHld = CommandHandler.getInstance();	
+		cmdHld.commandParser();
 	}
 }
