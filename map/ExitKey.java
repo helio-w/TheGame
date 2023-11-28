@@ -1,11 +1,10 @@
 package map;
-import objects.Item;
 import characters.Character;
 import characters.Player;
 
 public class ExitKey extends Exit{
     private boolean isLock;
-    private final Item KEY;
+    private final Integer ID_KEY;
     
     /**
      * Create a instance of ExitKey
@@ -16,10 +15,10 @@ public class ExitKey extends Exit{
      * @param lock : status of the exit (locked or not)
      * @param k : item to unlock the exit
      */
-    public ExitKey(String name, String desc, String txt,Location loc, Location dest, boolean lock, Item k){
+    public ExitKey(String name, String desc, String txt,Location loc, Location dest, boolean lock, Integer id_k){
         super(name, desc, txt, loc, dest);
         this.isLock = lock;
-        this.KEY = k;
+        this.ID_KEY = id_k;
     }
     /*
     @Override
@@ -34,7 +33,7 @@ public class ExitKey extends Exit{
      */
     public void open(){
         Character hero = super.LOC.getCharac().get(1); // Hero is in first position
-        if(((Player)hero).inventory.contains(KEY) || !(this.isLock)){
+        if(((Player)hero).inventory.containsKey(ID_KEY) || !(this.isLock)){
             isLock = false;
             System.out.println("La porte est ouverte");
         }else{
