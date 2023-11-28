@@ -1,13 +1,14 @@
 package characters;
 
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import objects.Item;
 
 import map.*;
 
 public class Player extends Character{
-    public ArrayList<Item> inventory = new ArrayList<Item>();
+    public Map<Integer, Item> inventory = new HashMap<Integer, Item>();
     public int attack = 1;
     //private int speed = 1;
 
@@ -35,13 +36,24 @@ public class Player extends Character{
      * Add a item to the inventory of the player
      * @param i : item to add
      */
-    public void addItem(Item i){
-        this.inventory.add(i);
+    public void addItem(Item i, Integer id){
+        this.inventory.put(id, i);
     }
 
     /**Display the name of the current location*/
     public void showLoc(){
         System.out.println("Current location : "+loc.NAME);
+    }
+
+    public void pickUpItems(){
+        if(this.loc.getItems().isEmpty()){
+            System.out.println("There are no items on the ground !");
+        }else{
+            for(Item i : this.loc.getItems().values()){
+                this.loc.getItems().remove(i.ID);
+                this.inventory.put(i.ID, i);
+            }
+        }
     }
 
     /**
