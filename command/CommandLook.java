@@ -8,20 +8,31 @@ public class CommandLook extends Command{
 	GameHandler theGame = GameHandler.getInstance();
 
 	public CommandLook() {
-		super("LOOK", "Give you a description of the environnement around you");
+		super("LOOK", "Give you a description of the environnement around you ! You can try to LOOK for EXITS or for PNJ and OBJ");
 	}
 
 	@Override
 	public boolean execute(String[] args) {
 		// TODO Auto-generated method stub
-		Location currentLoc = this.theGame.getCurrentMap();
-		if (args.length > 1) {
+		Location currentLoc = this.theGame.getCurrentMap();		
+		if (args.length == 2) {
 			// Print a list of thing in the location
-		} else {
+			String arg2 = args[1];
+			switch(arg2.toUpperCase()) {
+				case "EXITS" : currentLoc.showExits();break;
+				case "PNJ" : currentLoc.showCharac();break;
+				case "OBJ" : break;
+				default : Utils.printErr("Error look : argument is not recognized");break;
+			}
+		} else if (args.length == 1){
 			System.out.println(currentLoc.DESCRIPTION);
+		} else {
+			Utils.printErr("Error Look : too much arguments");
+			return false;
 		}
-		return false;
+		return true;
 	}
+	
 	
 
 }

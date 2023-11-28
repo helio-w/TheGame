@@ -9,7 +9,7 @@ public class GameHandler {
 	private boolean isFinished = false;	
 	private static GameHandler instance;
 	
-	private final ArrayList<Location> map = new ArrayList<Location>();
+	// private final ArrayList<Location> map = new ArrayList<Location>(); NOT NEEDED
 	private final Player PLAYER;
 	private Location currentLoc;
 	
@@ -20,18 +20,18 @@ public class GameHandler {
 		/*
 		 * 		Init of map
 		 */
-		Location startMap = new Location("Start map", "Juste a rnd start map");
+		Location startMap = new Location("startMap", "Just a rnd start map !");
 		this.currentLoc = startMap; 	// Setting current Location to startMap
-		
-		// Adding Location to map list
-		this.map.add(startMap);
-		
-		
+			
 		/*
 		 * 		Creating instance of player at the beginning of the game
 		 * */
 		
 		this.PLAYER = Player.getPlayer("Heros", startMap); 
+	}
+	
+	private GameHandler(Location startMap, String playerName) {
+		this.PLAYER = Player.getPlayer(playerName, startMap);
 	}
 	
 	
