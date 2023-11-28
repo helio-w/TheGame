@@ -2,6 +2,7 @@ package characters;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Iterator;
 
 import objects.Item;
 
@@ -32,27 +33,39 @@ public class Player extends Character{
         return instance;
     }
 
-    /**
-     * Add a item to the inventory of the player
-     * @param i : item to add
-     */
-    public void addItem(Item i, Integer id){
-        this.inventory.put(id, i);
-    }
 
     /**Display the name of the current location*/
     public void showLoc(){
         System.out.println("Current location : "+loc.NAME);
     }
 
-    public void pickUpItems(){
-        if(this.loc.getItems().isEmpty()){
-            System.out.println("There are no items on the ground !");
-        }else{
-            for(Item i : this.loc.getItems().values()){
-                this.loc.getItems().remove(i.ID);
+    /**Allows the player to collect all the items in a location*/
+    public void pickUpItems() {
+        if (this.loc.getItems().isEmpty()) {
+            System.out.println("There are no items on the ground!");
+        } else {
+            Iterator<Map.Entry<Integer, Item>> iterator = this.loc.getItems().entrySet().iterator();
+            //the iterator will run through objects of type Map.Entry<Integer, Item>
+            //entrySet() returns a set of key-value pairs from a map
+            while (iterator.hasNext()) {
+                Map.Entry<Integer, Item> entry = iterator.next();
+                Item i = entry.getValue();
                 this.inventory.put(i.ID, i);
+                iterator.remove();
             }
+        }
+    }
+
+    /**Displays items in the player's inventory*/
+    public void schowInventory(){
+        if(this.inventory.isEmpty()){
+            System.out.println("Your inventory is empty !");
+        }else{
+            System.out.print("Inventory : \n");
+            for(Item i : inventory.values()){
+                System.out.println(i);
+            }
+            System.out.println();
         }
     }
 
