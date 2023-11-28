@@ -33,4 +33,8 @@ public class Item {
             return i;
         }
     }
+
+    public String toString(){
+        return "Name : "+this.NAME+"\nDescription : "+this.DESC;
+    }
 }
