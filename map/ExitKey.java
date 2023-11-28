@@ -36,9 +36,9 @@ public class ExitKey extends Exit{
         Character hero = super.LOC.getCharac().get(Player.HERO_ID); // Hero is in first position
         if(((Player)hero).inventory.containsKey(ID_KEY) || !(this.isLock)){
             isLock = false;
-            System.out.println("La porte est ouverte");
+            System.out.println("The door is unlocked");
         }else{
-            System.out.println("La porte est vérouillée");
+            System.out.println("The door is locked");
         }
     }
 
