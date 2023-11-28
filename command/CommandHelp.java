@@ -8,9 +8,10 @@ public class CommandHelp extends Command{
 		super("Help", "Show help about the command handler and the program");
 	}
 	
+	@Override
 	public boolean execute(String[] args) {
 		String s = "";
-		s += "\nGlad you asked some help ! Here is some informations on available commands\n";
+		s += "Glad you asked some help ! Here is some informations on available commands\n";
 		s += "General usage of commands is : COMMAND arg1 arg2 ...\n \n";
 		s += "Available commands : \n";
 		for (Entry<String, Command> entry : CommandHandler.COMMANDS.entrySet()) {

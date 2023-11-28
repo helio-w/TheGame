@@ -26,5 +26,7 @@ replay_pid*
 .project
 .classpath
 
+compile
+run
 #ignore le dossier de vscode
 .vscode/

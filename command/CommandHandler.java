@@ -3,6 +3,7 @@ package command;
 // import game.GameHandler;
 import java.util.HashMap;
 import java.util.Scanner;
+
 public class CommandHandler {
 	
 	public static final HashMap<String, Command> COMMANDS = new HashMap<String, Command>();
@@ -20,11 +21,13 @@ public class CommandHandler {
 	private CommandHandler() {
 		Command cmdHelp = new CommandHelp();
 		Command cmdQuit = new CommandQuit();
+		Command cmdLook = new CommandLook();
 		
 		
 		// Adding these commands to the hashmap of command
 		CommandHandler.COMMANDS.put("HELP", cmdHelp);
 		CommandHandler.COMMANDS.put("QUIT", cmdQuit);
+		CommandHandler.COMMANDS.put("LOOK", cmdLook);
 	}
 	
 	
@@ -41,8 +44,11 @@ public class CommandHandler {
 	}
 	
 	public void commandParser() {
+		Utils.printDash(66);
 		System.out.print("~> ");
 		String command = this.scan.nextLine();
+		Utils.printDash(66);
+
 		this.execute(command);
 	}
 	
