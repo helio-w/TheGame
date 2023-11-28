@@ -70,8 +70,8 @@ public class Location{
      * @param l : the exit is lock or not ?
      * @param k : item to unlock the exit
      */
-    public void createExitKey(String name, String desc, String txt,Location dest, boolean l, Item k) throws Exception{
-        Exit e = new ExitKey(name, desc, txt, this, dest, l, k);
+    public void createExitKey(String name, String desc, String txt,Location dest, boolean l, Integer id_k) throws Exception{
+        Exit e = new ExitKey(name, desc, txt, this, dest, l, id_k);
         this.addExit(e, name);
     }
 
@@ -122,15 +122,17 @@ public class Location{
     }
 
     public static void main(String[] args){
-
-        Item i = new Item("clé", "Clé pour ouvrir E1");
-
-        Location l1 = new Location("L1", "Sortie(s) dispo : L2", "tadam");
-        Location l2 = new Location("L2", "Sortie(s) dispo : aucune", "tadam");
-
-        Player p = Player.getPlayer("Hero", l1);
         try{
-            l1.createExitKey("E1", "Sortie vers L2", "evenement random",l2, true, i);
+            Item i = Item.createItem("cle", "ceci est une cle", 1);
+
+            Location l1 = new Location("L1", "Sortie(s) dispo : L2", "tadam");
+            Location l2 = new Location("L2", "Sortie(s) dispo : aucune", "tadam");
+
+            Player p = Player.getPlayer("Hero", l1);
+        
+            l1.createExitKey("E1", "Sortie vers L2", "evenement random",l2, true, i.ID);
+
+            l1.addItemLoc(i, i.ID);
 
             l1.showExits();
             l1.showCharac();
@@ -140,14 +142,14 @@ public class Location{
             l1.showCharac();
             p.showLoc();
 
-            p.addItem(i);
+            p.pickUpItems();
 
             p.move("E1");
             l1.showCharac();
             l2.showCharac();
             p.showLoc(); 
         }catch(Exception e){
-            System.err.println("An error has occurred : "+e.getMessage());
+            System.err.println("\u001B[31mAn error has occurred : \u001B[0m\n\t"+e.getMessage()); // \u001B[31m change the text color to red and \u001B[0m to white
         }
         
     }
