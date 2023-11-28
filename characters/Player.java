@@ -11,6 +11,7 @@ import map.*;
 public class Player extends Character{
     public Map<Integer, Item> inventory = new HashMap<Integer, Item>();
     public static final Integer HERO_ID = 1;
+    //TODO peut-etre supprimer attack et speed
     public int attack = 1;
     //private int speed = 1;
 
