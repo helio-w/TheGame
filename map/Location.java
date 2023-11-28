@@ -97,6 +97,19 @@ public class Location{
     }
 
     /**
+     * Add a item in the location
+     * @param i : item to add
+     * @param id : id of the item
+     */
+    public void addItemLoc(Item i, Integer id){
+        if(this.items.containsKey(id)){
+            System.err.println("Error addItemLoc : item id already present in items");
+        }else{
+            this.items.put(id, i);
+        }
+    }
+
+    /**
      * Delete a location and its exits
      * @param l : location to be deleted
      */
