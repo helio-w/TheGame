@@ -18,7 +18,7 @@ public class GameHandler {
 
 		
 		/*
-		 * 		Init of maps
+		 * 		Init of map
 		 */
 		Location startMap = new Location("Start map", "Juste a rnd start map");
 		this.currentLoc = startMap; 	// Setting current Location to startMap
@@ -46,8 +46,10 @@ public class GameHandler {
 	// Methods	
 	public void startGame() {
 		CommandHandler cmdHdl = CommandHandler.getInstance();
-		System.out.println("Good afternoon sir ! It looks like you fall in a rabbit hole. Good luck to escape :) \n"
-				+ "Maybe you should try to type LOOK to observe the surrounding area or cry for HELP if you're lost");
+        System.out.print("\033[H\033[2J"); // Flush the console (seems it only works on Linux, not tested on Windows)
+        System.out.flush();               
+		System.out.println(Utils.printLine("Good afternoon sir ! It looks like you fall in a rabbit hole. Good luck to escape :) \n"
+				+ "Maybe you should try to type LOOK to observe the surrounding area or cry for HELP if you're lost", 13));
 		while(!this.isFinished) {
 			cmdHdl.commandParser();
 		}
