@@ -43,15 +43,15 @@ public class GameHandler {
 		return GameHandler.instance;
 	}
 	
-	// Methods
-	
+	// Methods	
 	public void startGame() {
 		CommandHandler cmdHdl = CommandHandler.getInstance();
+		System.out.println("Good afternoon sir ! It looks like you fall in a rabbit hole. Good luck to escape :) \n"
+				+ "Maybe you should try to type LOOK to observe the surrounding area or cry for HELP if you're lost");
 		while(!this.isFinished) {
 			cmdHdl.commandParser();
 		}
 		cmdHdl.closeScan();
-		
 	}
 	
 	public void terminate() {
@@ -59,7 +59,7 @@ public class GameHandler {
 	}
 	
 	/*
-	 * Getters
+	 *	   	Getters
 	 */
 	
 	public boolean isFinished() {
