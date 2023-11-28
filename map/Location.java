@@ -41,12 +41,12 @@ public class Location{
      * @param e : instance of the exit
      * @param name : name (key for the HashMap)
      */
-    public void addExit(Exit e, String name){
+    public void addExit(Exit e, String name) throws Exception{
         if(this.exits.containsKey(name)){
-            System.err.println("Error addExit : exit name already present");
+            throw new Exception("Error addExit : exit name already present");
         }
         if(e.LOC != this){
-            System.err.println("Error addExit : incorrect location of "+e.NAME);
+            throw new Exception("Error addExit : incorrect location of"+e.NAME);
         }
         if(e.DEST != this){
             this.exits.put(name, e);
@@ -58,7 +58,7 @@ public class Location{
      * @param desc : description of the exit
      * @param dest : destination of the exit
      */
-    public void createExit(String name, String desc, String txt,Location dest){
+    public void createExit(String name, String desc, String txt,Location dest) throws Exception{
         Exit e = new Exit(name, desc, txt,this, dest);
         this.addExit(e, name);
     }
@@ -70,7 +70,7 @@ public class Location{
      * @param l : the exit is lock or not ?
      * @param k : item to unlock the exit
      */
-    public void createExitKey(String name, String desc, String txt,Location dest, boolean l, Item k){
+    public void createExitKey(String name, String desc, String txt,Location dest, boolean l, Item k) throws Exception{
         Exit e = new ExitKey(name, desc, txt, this, dest, l, k);
         this.addExit(e, name);
     }
@@ -101,9 +101,9 @@ public class Location{
      * @param i : item to add
      * @param id : id of the item
      */
-    public void addItemLoc(Item i, Integer id){
+    public void addItemLoc(Item i, Integer id) throws Exception{
         if(this.items.containsKey(id)){
-            System.err.println("Error addItemLoc : item id already present in items");
+            throw new Exception("Error addItemLoc : item id already present in items");
         }else{
             this.items.put(id, i);
         }
@@ -129,22 +129,26 @@ public class Location{
         Location l2 = new Location("L2", "Sortie(s) dispo : aucune", "tadam");
 
         Player p = Player.getPlayer("Hero", l1);
+        try{
+            l1.createExitKey("E1", "Sortie vers L2", "evenement random",l2, true, i);
+
+            l1.showExits();
+            l1.showCharac();
+            p.showLoc();
+
+            p.move("E1");
+            l1.showCharac();
+            p.showLoc();
+
+            p.addItem(i);
+
+            p.move("E1");
+            l1.showCharac();
+            l2.showCharac();
+            p.showLoc(); 
+        }catch(Exception e){
+            System.err.println("An error has occurred : "+e.getMessage());
+        }
         
-        l1.createExitKey("E1", "Sortie vers L2", "evenement random",l2, true, i);
-
-        l1.showExits();
-        l1.showCharac();
-        p.showLoc();
-
-        p.move("E1");
-        l1.showCharac();
-        p.showLoc();
-
-        p.addItem(i);
-
-        p.move("E1");
-        l1.showCharac();
-        l2.showCharac();
-        p.showLoc();
     }
 }
