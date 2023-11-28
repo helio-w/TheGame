@@ -10,6 +10,7 @@ import map.*;
 
 public class Player extends Character{
     public Map<Integer, Item> inventory = new HashMap<Integer, Item>();
+    public static final Integer HERO_ID = 1;
     public int attack = 1;
     //private int speed = 1;
 
@@ -28,7 +29,7 @@ public class Player extends Character{
     public static Player getPlayer(String name, Location l){
         if (instance == null) {
             instance = new Player(name, l);
-            l.getCharac().put(1, instance);
+            l.getCharac().put(HERO_ID, instance);
         }
         return instance;
     }
@@ -82,14 +83,14 @@ public class Player extends Character{
             ExitKey ek = (ExitKey)e;
             ek.open();
             if(!(ek.getIsLock())){
-                loc.getCharac().remove(1);
+                loc.getCharac().remove(HERO_ID);
                 instance.loc = dest;
-                dest.getCharac().put(1, instance);
+                dest.getCharac().put(HERO_ID, instance);
             }
         }else{
             loc.getCharac().remove(1);
             instance.loc = dest;
-            dest.getCharac().put(1, instance);
+            dest.getCharac().put(HERO_ID, instance);
         }
     }
 }
