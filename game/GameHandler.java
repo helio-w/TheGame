@@ -32,6 +32,7 @@ public class GameHandler {
 	
 	private GameHandler(Location startMap, String playerName) {
 		this.PLAYER = Player.getPlayer(playerName, startMap);
+		this.currentLoc = startMap;
 	}
 	
 	
@@ -39,6 +40,16 @@ public class GameHandler {
 	public static GameHandler getInstance() {
 		if (GameHandler.instance == null) {
 			GameHandler.instance = new GameHandler();
+		}
+		return GameHandler.instance;
+	}
+	
+	/*
+	 * 
+	 */
+	public static GameHandler createInstance(Location startMap, String playerName) {
+		if (GameHandler.instance == null) {
+			GameHandler.instance = new GameHandler(startMap, playerName);
 		}
 		return GameHandler.instance;
 	}
@@ -81,7 +92,17 @@ public class GameHandler {
 	 */
 	
 	public static void main(String[] args) {
-		GameHandler theGame = GameHandler.getInstance();
+		/* Locations init */
+		Location startMap = new Location("firstClinicRoom", "Just a rnd start map !");
+		/* End of locations init */
+		/* Exits init */
+		
+		/* End of exits init */
+		/* NPC Init */
+		
+		/* End of NPC init */
+
+		GameHandler theGame = GameHandler.createInstance(startMap, "Chell");
 		theGame.startGame();
 	}
 }
