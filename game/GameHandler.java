@@ -93,16 +93,28 @@ public class GameHandler {
 	
 	public static void main(String[] args) {
 		/* Locations init */
-		Location startMap = new Location("firstClinicRoom", "Just a rnd start map !");
+		Location firstClinicRoom = new Location("firstClinicRoom", 
+				"You wake yourself in an empty room, the only light in the room is a candle on a table just beside your bed.\n"
+				+ "The room is in a messy state the shelf contain books, but they seem too complicated for you.\n"
+				+ "Clinics instruments are scattered in the room.\n"
+				+ "On the table it seems there's a note.");
+		
+		Location secondClinicRoom = new Location("secondClinicRoom",
+				"As you entered the room, the silence that was omnipresent start to fade as the sound of tearing flesh made itself heard.\n"
+				+ "In the middle of the big room, a beast is eating.\n"
+				+ "His black fur and facial features could make you think of a wolf, but there is also something human in him.\n"
+				+ "The lycanthrope seam in a bad state, trace of burning on his body, but the fact the he satiate his hunger on a human isn't really appeasing.\n"
+				+ "The only exit is behind the beast."	
+				);
 		/* End of locations init */
 		/* Exits init */
-		
+		firstClinicRoom.createExit("toSecondClinicRoom", "secondClinicRoom", secondClinicRoom);
 		/* End of exits init */
 		/* NPC Init */
 		
 		/* End of NPC init */
 
-		GameHandler theGame = GameHandler.createInstance(startMap, "Chell");
+		GameHandler theGame = GameHandler.createInstance(firstClinicRoom, "Chell");
 		theGame.startGame();
 	}
 }
