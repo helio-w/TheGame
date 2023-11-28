@@ -16,8 +16,8 @@ public class ExitKey extends Exit{
      * @param lock : status of the exit (locked or not)
      * @param k : item to unlock the exit
      */
-    public ExitKey(String name, String desc, Location loc, Location dest, boolean lock, Item k){
-        super(name, desc, loc, dest);
+    public ExitKey(String name, String desc, String txt,Location loc, Location dest, boolean lock, Item k){
+        super(name, desc, txt, loc, dest);
         this.isLock = lock;
         this.KEY = k;
     }
