@@ -23,6 +23,6 @@ public class Exit {
     }
 
     public String toString(){
-        return "\tNom : "+this.NAME+"\n\tDestination : "+this.DEST.NAME+"\n\tDescription :\n\t"+this.DESCRIPTION;
+        return "\tName : "+this.NAME+"\n\tDestination : "+this.DEST.NAME+"\n\tDescription : "+this.DESCRIPTION;
     }
 }
