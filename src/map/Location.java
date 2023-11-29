@@ -40,15 +40,15 @@ public class Location{
      * @param e : instance of the exit
      * @param name : name (key for the HashMap)
      */
-    public void addExit(Exit e, String name) throws Exception{
-        if(this.exits.containsKey(name)){
+    public void addExit(Exit e) throws Exception{
+        if(this.exits.containsKey(e.NAME)){
             throw new Exception("Error addExit : exit name already present");
         }
         if(e.LOC != this){
             throw new Exception("Error addExit : incorrect location of"+e.NAME);
         }
         if(e.DEST != this){
-            this.exits.put(name, e);
+            this.exits.put(e.NAME, e);
         }
     }
     /**
@@ -60,8 +60,8 @@ public class Location{
     public void createExit(String name, String desc, String txt,Location dest) throws Exception{
         Exit e = new Exit(name, desc, txt, this, dest);
         Exit e_bis = new Exit(name, desc, txt, dest, this);
-        this.addExit(e, name);
-        dest.addExit(e_bis, name);
+        this.addExit(e);
+        dest.addExit(e_bis);
     }
     /**
      * Create a instance of ExitKey and add it to the Map of her location
@@ -74,8 +74,8 @@ public class Location{
     public void createExitKey(String name, String desc, String txt,Location dest, boolean l, Integer id_k) throws Exception{
         Exit e = new ExitKey(name, desc, txt, this, dest, l, id_k);
         Exit e_bis = new ExitKey(name, desc, txt, dest, this, l, id_k);
-        this.addExit(e, name);
-        dest.addExit(e_bis, name);
+        this.addExit(e);
+        dest.addExit(e_bis);
     }
 
     public Map<String, Exit> getExits(){
@@ -90,7 +90,9 @@ public class Location{
     public void showCharac(){
         System.out.print(this.NAME+" : \n");
         for(Character c : characs.values()){
-            System.out.println(c);
+            if(c.hp >0){
+                System.out.println(c);
+            }
         }
         System.out.println();
     }
@@ -102,25 +104,20 @@ public class Location{
     /**
      * Add a item in the location
      * @param i : item to add
-     * @param id : id of the item
      */
-    public void addItemLoc(Item i, Integer id) throws Exception{
-        if(this.items.containsKey(id)){
-            throw new Exception("Error addItemLoc : item id already present in items");
-        }else{
-            this.items.put(id, i);
-        }
+    public void addItemLoc(Item i){
+            this.items.put(i.ID, i);
     }
 
-    /**
-     * Delete a location and its exits
-     * @param l : location to be deleted
-     */
-    public void deleteLoc(Location l){
-        for(Exit e : l.exits.values()){
-            l.exits.remove(e.NAME);
-            e = null;
+    public void addCharacLoc(Character c){
+        this.characs.put(c.ID, c);
+    }
+
+    public void showItems(){
+        System.out.print(this.NAME+" : \n");
+        for(Item i : items.values()){
+            System.out.println(i);
         }
-        l = null;
+        System.out.println();
     }
 }

@@ -1,6 +1,6 @@
 package characters;
 
-import objects.Item;
+import objects.*;
 import map.Location;
 
 import static org.junit.Assert.assertEquals;
@@ -50,8 +50,8 @@ public class PlayerTest {
             Item i2 = Item.createItem("null", "null", 2);
             Location l1 = new Location("L1", "Sortie(s) dispo : L2", "");
             Player p = Player.getPlayer("Hero", l1);
-            l1.addItemLoc(i, i.ID);
-            l1.addItemLoc(i2, i2.ID);
+            l1.addItemLoc(i);
+            l1.addItemLoc(i2);
             assertFalse(p.inventory.containsKey(i.ID)||p.inventory.containsKey(i2.ID)); 
             p.pickUpItems();
             assertTrue(p.inventory.containsKey(i.ID)||p.inventory.containsKey(i2.ID));
@@ -61,5 +61,53 @@ public class PlayerTest {
 
     }
 
-    
+    @Test
+    public void testPickUpItem(){
+        try{
+            Item i = Item.createItem("cle", "C'est une cle", 1);
+            Item i2 = Item.createItem("null", "null", 2);
+            Location l1 = new Location("L1", "Sortie(s) dispo : L2", "");
+            Player p = Player.getPlayer("Hero", l1);
+            l1.addItemLoc(i);
+            l1.addItemLoc(i2);
+            assertFalse(p.inventory.containsKey(i.ID)); 
+            p.pickUpItem("cle");
+            assertTrue(p.inventory.containsKey(i.ID));
+        }catch(Exception e){
+            System.err.println("\u001B[31mAn error has occurred : \u001B[0m\n\t"+e.getMessage()); // \u001B[31m change the text color to red and \u001B[0m to white
+        }
+    }
+
+    @Test
+    public void testUse(){
+        try{
+            Item i = (Food)Item.createItem("pain", "pain", 1);
+            Item i2 = Item.createItem("brique", "brique", 2);
+            Location l1 = new Location("L1", "Sortie(s) dispo : L2", "");
+            Player p = Player.getPlayer("Hero", l1);
+
+            p.inventory.put(i.ID, i);
+            p.inventory.put(i2.ID, i2);
+            p.use(i.NAME);
+            p.use(i2.NAME);
+            
+            assertFalse(p.inventory.containsKey(i.ID));
+            assertTrue(p.inventory.containsKey(i2.ID));
+        }catch(Exception e){
+            System.err.println("\u001B[31mAn error has occurred : \u001B[0m\n\t"+e.getMessage()); // \u001B[31m change the text color to red and \u001B[0m to white
+        }
+    }
+
+    @Test
+    public void testAttack(){
+        try{
+            Location l1 = new Location("L1", "Sortie(s) dispo : L2", "");
+            Player p = Player.getPlayer("Hero", l1);
+            Character c = Character.createCharac("john", 20, l1, 2);
+            p.attack("john");
+            assertTrue(c.hp == 0);
+        }catch(Exception e){
+            System.err.println("\u001B[31mAn error has occurred : \u001B[0m\n\t"+e.getMessage()); // \u001B[31m change the text color to red and \u001B[0m to white
+        }
+    }
 }
