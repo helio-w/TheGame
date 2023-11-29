@@ -10,6 +10,7 @@ public class Character{
     public Location loc;
     public final Integer ID;
 
+    /**Hashmap of all characters */
      public static Map<Integer, Character> allCharac = new HashMap<Integer, Character>();
 
     /**
@@ -25,6 +26,7 @@ public class Character{
         this.ID = id;
     }
 
+    /**Create a character, add it in allCharac and return it */
     public static Character createCharac(String n, int hp, Location l, Integer id) throws Exception{
         Character i = new Character(n, hp, l, id);
         if(allCharac.containsKey(id)){

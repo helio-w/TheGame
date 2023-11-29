@@ -8,6 +8,7 @@ public class Item {
     public final String DESC;
     public final Integer ID;
 
+    /**Hashmap of all items */
     public static Map<Integer, Item> allItems = new HashMap<Integer, Item>();
 
     protected Item(String name, String desc, Integer id){

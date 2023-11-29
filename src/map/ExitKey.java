@@ -20,13 +20,6 @@ public class ExitKey extends Exit{
         this.isLock = lock;
         this.ID_KEY = id_k;
     }
-    //TODO supprimer le commentaire ci dessous à la fin
-    /*
-    @Override
-    public String toString(){
-        String lock = this.isLock?"YES":"NO"; //if isLoack then "YES" else "NO"
-        return "\tName : "+this.NAME+"\n\tDestination : "+this.DEST.NAME+"\n\tLock : "+lock+"\n\tDescription :\n\t"+this.DESCRIPTION;
-    }*/
 
     /**
      * Unlock the exit if the player has the right item
