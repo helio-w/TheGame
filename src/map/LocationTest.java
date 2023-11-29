@@ -1,10 +1,7 @@
 package map;
 
 import objects.Item;
-import characters.Character;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -62,6 +59,4 @@ public class LocationTest {
             System.err.println("\u001B[31mAn error has occurred : \u001B[0m\n\t"+e.getMessage());
         }
     }
-
-    
 }
