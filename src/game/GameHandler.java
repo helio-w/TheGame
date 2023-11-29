@@ -117,7 +117,7 @@ public class GameHandler {
 		/* Items init */
 		Item itemList = Item.createItem("Key", "Just a test key", 0);
 		
-		firstClinicRoom.addItemLoc(itemList, 0);
+		firstClinicRoom.addItemLoc(itemList);
 		/* End of items init*/
 		/* NPC Init */
 		
