@@ -114,16 +114,4 @@ public class Location{
         }
         System.out.println();
     }
-
-    /**
-     * Delete a location and its exits
-     * @param l : location to be deleted
-     */
-    public void deleteLoc(Location l){
-        for(Exit e : l.exits.values()){
-            l.exits.remove(e.NAME);
-            e = null;
-        }
-        l = null;
-    }
 }
