@@ -102,14 +102,9 @@ public class Location{
     /**
      * Add a item in the location
      * @param i : item to add
-     * @param id : id of the item
      */
-    public void addItemLoc(Item i, Integer id) throws Exception{
-        if(this.items.containsKey(id)){
-            throw new Exception("Error addItemLoc : item id already present in items");
-        }else{
-            this.items.put(id, i);
-        }
+    public void addItemLoc(Item i){
+            this.items.put(i.ID, i);
     }
 
     public void showItems(){
