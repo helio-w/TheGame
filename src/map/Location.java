@@ -106,7 +106,7 @@ public class Location{
      * @param i : item to add
      */
     public void addItemLoc(Item i){
-            this.items.put(i.ID, i);
+        this.items.put(i.ID, i);
     }
 
     public void addCharacLoc(Character c){
