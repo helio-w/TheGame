@@ -20,6 +20,7 @@ public class ExitKey extends Exit{
         this.isLock = lock;
         this.ID_KEY = id_k;
     }
+    //TODO supprimer le commentaire ci dessous à la fin
     /*
     @Override
     public String toString(){
@@ -32,12 +33,12 @@ public class ExitKey extends Exit{
      * @param id : id of the item
      */
     public void open(){
-        Character hero = super.LOC.getCharac().get(1); // Hero is in first position
+        Character hero = super.LOC.getCharac().get(Player.HERO_ID); // Hero is in first position
         if(((Player)hero).inventory.containsKey(ID_KEY) || !(this.isLock)){
             isLock = false;
-            System.out.println("La porte est ouverte");
+            System.out.println("The door is unlocked");
         }else{
-            System.out.println("La porte est vérouillée");
+            System.out.println("The door is locked");
         }
     }
 

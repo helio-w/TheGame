@@ -59,8 +59,9 @@ public class Location{
      * @param dest : destination of the exit
      */
     public void createExit(String name, String desc, String txt,Location dest) throws Exception{
-        Exit e = new Exit(name, desc, txt,this, dest);
+        Exit e = new Exit(name, desc, txt, this, dest);
         this.addExit(e, name);
+        
     }
     /**
      * Create a instance of ExitKey and add it to the Map of her location
@@ -72,7 +73,9 @@ public class Location{
      */
     public void createExitKey(String name, String desc, String txt,Location dest, boolean l, Integer id_k) throws Exception{
         Exit e = new ExitKey(name, desc, txt, this, dest, l, id_k);
+        Exit e_bis = new ExitKey(name, desc, txt, dest, this, l, id_k);
         this.addExit(e, name);
+        dest.addExit(e_bis, name);
     }
 
     public Map<String, Exit> getExits(){
@@ -151,6 +154,8 @@ public class Location{
             p.move("E1");
             l1.showCharac();
             l2.showCharac();
+            p.showLoc();
+            p.move("E1");
             p.showLoc();
         }catch(Exception e){
             System.err.println("\u001B[31mAn error has occurred : \u001B[0m\n\t"+e.getMessage()); // \u001B[31m change the text color to red and \u001B[0m to white
