@@ -23,11 +23,12 @@ public class CommandLook extends Command{
 			String arg2;
 			while(i < args.length) {
 				arg2 = args[i];
+				// Parsing 2nd arg
 				switch(arg2.toUpperCase()) {
 					case "EXITS" : currentLoc.showExits();break;
 					case "NPC" : currentLoc.showCharac();break;
-					case "INV" : ply.schowInventory();break;
-					// case "ITM" : currentLoc.showItems;break;
+					case "INV" : ply.showInventory();break;
+					case "ITM" : currentLoc.showItems();break;
 					default : Utils.printErr("Error LOOK : argument is not recognized");break;
 				}	
 				i++;

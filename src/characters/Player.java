@@ -75,7 +75,7 @@ public class Player extends Character{
     }
 
     /**Displays items in the player's inventory*/
-    public void schowInventory(){
+    public void showInventory(){
         if(this.inventory.isEmpty()){
             System.out.println("Your inventory is empty !");
         }else{

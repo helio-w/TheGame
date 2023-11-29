@@ -123,7 +123,7 @@ public class GameHandler {
 		
 		/* End of NPC init */
 
-		GameHandler theGame = GameHandler.createInstance(firstClinicRoom, "Chell");		// The cake is a lie
+		GameHandler theGame = GameHandler.createInstance(firstClinicRoom, "You");		// The cake is a lie
 		theGame.startGame();
 	}
 }
