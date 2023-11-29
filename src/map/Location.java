@@ -90,7 +90,9 @@ public class Location{
     public void showCharac(){
         System.out.print(this.NAME+" : \n");
         for(Character c : characs.values()){
-            System.out.println(c);
+            if(c.hp >0){
+                System.out.println(c);
+            }
         }
         System.out.println();
     }
@@ -105,6 +107,10 @@ public class Location{
      */
     public void addItemLoc(Item i){
             this.items.put(i.ID, i);
+    }
+
+    public void addCharacLoc(Character c){
+        this.characs.put(c.ID, c);
     }
 
     public void showItems(){

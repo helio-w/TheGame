@@ -11,26 +11,27 @@ import map.*;
 public class Player extends Character{
     public Map<Integer, Item> inventory = new HashMap<Integer, Item>();
     public static final Integer HERO_ID = 1;
-    //TODO peut-etre supprimer attack et speed
-    public int attack = 1;
-    //private int speed = 1;
-
 
     private static Player instance;
 
     private Player(String name, Location l){
-        super(name, 20, l);
+        super(name, 20, l, HERO_ID);
     }
 
     /**
      * Creates a unique instance of Player
      * @param name : name of the player
+     * @param l : location of the player
      * @return return the instance
      */
     public static Player getPlayer(String name, Location l){
-        if (instance == null) {
-            instance = new Player(name, l);
-            l.getCharac().put(HERO_ID, instance);
+        try{
+            if (instance == null) {
+                instance = (Player)Character.createCharac(name, 20, l, HERO_ID);
+                l.getCharac().put(HERO_ID, instance);
+            }
+        }catch(Exception e){
+            System.err.println("Error getPlayer : there are already a character with 1 as id");
         }
         return instance;
     }
@@ -110,6 +111,10 @@ public class Player extends Character{
         }
     }
 
+    /**
+     * Allows the player to eat if the item used is an instance of Food
+     * @param name : name of the item
+     */
     public void use(String name){
         Iterator<Map.Entry<Integer, Item>> iterator = this.inventory.entrySet().iterator();
         while(iterator.hasNext()){
@@ -117,6 +122,22 @@ public class Player extends Character{
             String i_name = entry.getValue().NAME;
             if(name == i_name && entry.getValue() instanceof Food){
                 iterator.remove();
+                break;
+            }
+        }
+    }
+
+    /**
+     * Kills a Character instantly because the player is super-strong, i.e. sets his health points at zero
+     * @param name : name of the chracter
+     */
+    public void attack(String name){
+        Iterator<Map.Entry<Integer, Character>> iterator = this.loc.getCharac().entrySet().iterator();
+        while(iterator.hasNext()){
+            Map.Entry<Integer, Character> entry = iterator.next();
+            String i_name = entry.getValue().NAME;
+            if(name == i_name){
+                entry.getValue().hp = 0;
                 break;
             }
         }

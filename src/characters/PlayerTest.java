@@ -97,4 +97,17 @@ public class PlayerTest {
             System.err.println("\u001B[31mAn error has occurred : \u001B[0m\n\t"+e.getMessage()); // \u001B[31m change the text color to red and \u001B[0m to white
         }
     }
+
+    @Test
+    public void testAttack(){
+        try{
+            Location l1 = new Location("L1", "Sortie(s) dispo : L2", "");
+            Player p = Player.getPlayer("Hero", l1);
+            Character c = Character.createCharac("john", 20, l1, 2);
+            p.attack("john");
+            assertTrue(c.hp == 0);
+        }catch(Exception e){
+            System.err.println("\u001B[31mAn error has occurred : \u001B[0m\n\t"+e.getMessage()); // \u001B[31m change the text color to red and \u001B[0m to white
+        }
+    }
 }
