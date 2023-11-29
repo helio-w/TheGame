@@ -3,6 +3,7 @@ package game;
 import characters.*;
 import map.*;
 import command.*;
+import objects.*;
 
 public class GameHandler {
 	private boolean isFinished = false;		// State of the game
@@ -110,9 +111,14 @@ public class GameHandler {
 				);
 		/* End of locations init */
 		/* Exits init */
-		firstClinicRoom.createExit("TOSECONDCLINICROOM", "toSecondClinicRoom",
+		firstClinicRoom.createExit("DOOR", "toSecondClinicRoom",
 				"The door opens on stair that leads downward, it's the only way to go forward so you take them", secondClinicRoom);
 		/* End of exits init */
+		/* Items init */
+		Item itemList = Item.createItem("Key", "Just a test key", 0);
+		
+		firstClinicRoom.addItemLoc(itemList, 0);
+		/* End of items init*/
 		/* NPC Init */
 		
 		/* End of NPC init */
