@@ -1,7 +1,6 @@
 package map;
 import objects.Item;
 import characters.Character;
-import characters.Player;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -122,44 +121,5 @@ public class Location{
             e = null;
         }
         l = null;
-    }
-
-    public static void main(String[] args){
-        try{
-            Item i = Item.createItem("cle", "ceci est une cle", 1);
-            Item i2 = Item.createItem("cle2", "ceci est une cle", 2);
-
-            Location l1 = new Location("L1", "Sortie(s) dispo : L2", "tadam");
-            Location l2 = new Location("L2", "Sortie(s) dispo : aucune", "tadam");
-
-            Player p = Player.getPlayer("Hero", l1);
-        
-            l1.createExitKey("E1", "Sortie vers L2", "evenement random",l2, true, i.ID);
-
-            l1.addItemLoc(i, i.ID);
-            l1.addItemLoc(i2, i2.ID);
-
-            l1.showExits();
-            l1.showCharac();
-            p.showLoc();
-
-            p.schowInventory();
-            
-            p.move("E1");
-            l1.showCharac();
-            p.showLoc();
-
-            p.pickUpItems();
-            p.schowInventory();
-            p.move("E1");
-            l1.showCharac();
-            l2.showCharac();
-            p.showLoc();
-            p.move("E1");
-            p.showLoc();
-        }catch(Exception e){
-            System.err.println("\u001B[31mAn error has occurred : \u001B[0m\n\t"+e.getMessage()); // \u001B[31m change the text color to red and \u001B[0m to white
-        }
-        
     }
 }
