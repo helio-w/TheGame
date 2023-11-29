@@ -59,8 +59,9 @@ public class Location{
      */
     public void createExit(String name, String desc, String txt,Location dest) throws Exception{
         Exit e = new Exit(name, desc, txt, this, dest);
+        Exit e_bis = new Exit(name, desc, txt, dest, this);
         this.addExit(e, name);
-        
+        dest.addExit(e_bis, name);
     }
     /**
      * Create a instance of ExitKey and add it to the Map of her location
