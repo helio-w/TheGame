@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Iterator;
 
-import objects.Item;
+import objects.*;
 
 import map.*;
 
@@ -58,6 +58,21 @@ public class Player extends Character{
         }
     }
 
+    /**Allows the player to collect one items in a location */
+    public void pickUpItem(String name){
+        Iterator<Map.Entry<Integer, Item>> iterator = this.loc.getItems().entrySet().iterator();
+        while(iterator.hasNext()){
+            Map.Entry<Integer, Item> entry = iterator.next();
+            String i_name = entry.getValue().NAME;
+            if(name == i_name){
+                Item i = entry.getValue();
+                this.inventory.put(i.ID, i);
+                iterator.remove();
+                break;
+            }
+        }
+    }
+
     /**Displays items in the player's inventory*/
     public void schowInventory(){
         if(this.inventory.isEmpty()){
@@ -92,6 +107,18 @@ public class Player extends Character{
             loc.getCharac().remove(1);
             instance.loc = dest;
             dest.getCharac().put(HERO_ID, instance);
+        }
+    }
+
+    public void use(String name){
+        Iterator<Map.Entry<Integer, Item>> iterator = this.inventory.entrySet().iterator();
+        while(iterator.hasNext()){
+            Map.Entry<Integer, Item> entry = iterator.next();
+            String i_name = entry.getValue().NAME;
+            if(name == i_name && entry.getValue() instanceof Food){
+                iterator.remove();
+                break;
+            }
         }
     }
 }
