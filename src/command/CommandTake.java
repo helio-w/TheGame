@@ -1,6 +1,7 @@
 package command;
 
 import game.GameHandler;
+import characters.Player;
 
 public class CommandTake extends Command {
 	GameHandler theGame = GameHandler.getInstance();
@@ -10,7 +11,11 @@ public class CommandTake extends Command {
 	}
 	
 	public boolean execute(String[] args) {
+		Player ply = this.theGame.getPlayer();
 		if (args.length == 2) {
+			
+			return true;
+		}else if(args.length == 1) {
 			
 			return true;
 		}else {
