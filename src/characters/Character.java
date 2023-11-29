@@ -33,6 +33,7 @@ public class Character{
             throw new Exception("Error createCharac : item id already in allCharac");
         }else{
             allCharac.put(id, i);
+            l.getCharac().put(id, i);
             return i;
         }
     }

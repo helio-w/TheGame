@@ -27,7 +27,7 @@ public class Player extends Character{
     public static Player getPlayer(String name, Location l){
         try{
             if (instance == null) {
-                instance = (Player)Character.createCharac(name, 20, l, HERO_ID);
+                instance = new Player(name, l);
                 l.getCharac().put(HERO_ID, instance);
             }
         }catch(Exception e){
