@@ -32,7 +32,6 @@ public class Location{
         for(Exit ex : exits.values()){
             System.out.println(ex);
         }
-        System.out.println();
     }
 
     /**
@@ -94,7 +93,6 @@ public class Location{
                 System.out.println(c);
             }
         }
-        System.out.println();
     }
 
     public Map<Integer, Item> getItems(){
@@ -118,6 +116,5 @@ public class Location{
         for(Item i : items.values()){
             System.out.println(i);
         }
-        System.out.println();
     }
 }

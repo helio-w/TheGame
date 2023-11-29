@@ -83,7 +83,6 @@ public class Player extends Character{
             for(Item i : inventory.values()){
                 System.out.println(i);
             }
-            System.out.println();
         }
     }
 
