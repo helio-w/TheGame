@@ -22,12 +22,14 @@ public class CommandHandler {
 		Command cmdHelp = new CommandHelp();
 		Command cmdQuit = new CommandQuit();
 		Command cmdLook = new CommandLook();
+		Command cmdGo = new CommandGo();
 		
 		
 		// Adding these commands to the hashmap of command
 		CommandHandler.COMMANDS.put("HELP", cmdHelp);
 		CommandHandler.COMMANDS.put("QUIT", cmdQuit);
 		CommandHandler.COMMANDS.put("LOOK", cmdLook);
+		CommandHandler.COMMANDS.put("GO", cmdGo);
 	}
 	
 	
