@@ -10,7 +10,7 @@ public class Item {
 
     private static Map<Integer, Item> allItems = new HashMap<Integer, Item>();
 
-    private Item(String name, String desc, Integer id){
+    protected Item(String name, String desc, Integer id){
         this.NAME = name;
         this.DESC = desc;
         this.ID = id;
