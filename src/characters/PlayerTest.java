@@ -61,5 +61,20 @@ public class PlayerTest {
 
     }
 
-    
+    @Test
+    public void testPickUpItem(){
+        try{
+            Item i = Item.createItem("cle", "C'est une cle", 1);
+            Item i2 = Item.createItem("null", "null", 2);
+            Location l1 = new Location("L1", "Sortie(s) dispo : L2", "");
+            Player p = Player.getPlayer("Hero", l1);
+            l1.addItemLoc(i, i.ID);
+            l1.addItemLoc(i2, i2.ID);
+            assertFalse(p.inventory.containsKey(i.ID)); 
+            p.pickUpItem("cle");
+            assertTrue(p.inventory.containsKey(i.ID));
+        }catch(Exception e){
+            System.err.println("\u001B[31mAn error has occurred : \u001B[0m\n\t"+e.getMessage()); // \u001B[31m change the text color to red and \u001B[0m to white
+        }
+    }
 }
