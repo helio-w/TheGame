@@ -50,8 +50,8 @@ public class PlayerTest {
             Item i2 = Item.createItem("null", "null", 2);
             Location l1 = new Location("L1", "Sortie(s) dispo : L2", "");
             Player p = Player.getPlayer("Hero", l1);
-            l1.addItemLoc(i, i.ID);
-            l1.addItemLoc(i2, i2.ID);
+            l1.addItemLoc(i);
+            l1.addItemLoc(i2);
             assertFalse(p.inventory.containsKey(i.ID)||p.inventory.containsKey(i2.ID)); 
             p.pickUpItems();
             assertTrue(p.inventory.containsKey(i.ID)||p.inventory.containsKey(i2.ID));
@@ -68,8 +68,8 @@ public class PlayerTest {
             Item i2 = Item.createItem("null", "null", 2);
             Location l1 = new Location("L1", "Sortie(s) dispo : L2", "");
             Player p = Player.getPlayer("Hero", l1);
-            l1.addItemLoc(i, i.ID);
-            l1.addItemLoc(i2, i2.ID);
+            l1.addItemLoc(i);
+            l1.addItemLoc(i2);
             assertFalse(p.inventory.containsKey(i.ID)); 
             p.pickUpItem("cle");
             assertTrue(p.inventory.containsKey(i.ID));
