@@ -264,7 +264,7 @@ public class GameHandler {
 				+"As the moon rise in the sky, you think to yourself that it will be a long night.\n"
 				+"One that you will maybe not see the end.\n", End);
 		End.exitEnd("LEAVE_IN_THE_FOREST");
-		End.exitEnd("STOP_THE_BOX");
+		stopingTheBox.exitEnd("STOP_THE_BOX");
 		/* End of exits init */
 		
 		/* NPC Init */
