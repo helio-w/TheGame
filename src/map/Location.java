@@ -120,6 +120,11 @@ public class Location{
         }
     }
 
+    /**
+     * Indicates whether the npc exists in the location
+     * @param name : name of the npc
+     * @return true if this is the case, false otherwise
+     */
     public boolean hasNPC(String name){
         Iterator<Map.Entry<Integer, Character>> iterator = this.getCharac().entrySet().iterator();
         Boolean res = false;
