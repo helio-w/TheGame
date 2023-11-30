@@ -15,8 +15,8 @@ public class CommandLook extends Command{
 	@Override
 	public boolean execute(String[] args) {
 		// TODO Auto-generated method stub
-		Location currentLoc = this.theGame.currentLoc;
 		Player ply = this.theGame.getPlayer();
+		Location currentLoc = ply.loc;
 		if (args.length >= 2) {
 			int i = 1;
 			// Print a list of thing in the location
