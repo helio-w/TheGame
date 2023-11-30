@@ -26,6 +26,7 @@ public class CommandHandler {
 		Command cmdTake = new CommandTake();
 		Command cmdTalk = new CommandTalk();
 		Command cmdUse = new CommandUse();
+		Command cmdAttack = new CommandAttack();
 		
 		
 		// Adding these commands to the hashmap of command
@@ -36,6 +37,7 @@ public class CommandHandler {
 		CommandHandler.COMMANDS.put("TAKE", cmdTake);
 		CommandHandler.COMMANDS.put("TALK", cmdTalk);
 		CommandHandler.COMMANDS.put("USE", cmdUse);
+		CommandHandler.COMMANDS.put("ATTACK", cmdAttack);
 	}
 	
 	
