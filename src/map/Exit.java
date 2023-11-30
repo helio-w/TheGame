@@ -6,6 +6,7 @@ public class Exit {
     public final Location DEST;
     public final Location LOC;
     public final String TXTCROSS;
+    private boolean isEnd = false;
 
     /**
      * Create a instance of Exit
@@ -20,6 +21,14 @@ public class Exit {
         this.DEST = dest;
         this.LOC = loc;
         this.TXTCROSS = txt;
+    }
+
+    public void end(){
+        this.isEnd = true;
+    }
+
+    public boolean getIsEnd(){
+        return this.isEnd;
     }
 
     public String toString(){

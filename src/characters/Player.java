@@ -2,6 +2,9 @@ package characters;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import game.GameHandler;
+
 import java.util.Iterator;
 
 import objects.*;
@@ -104,11 +107,17 @@ public class Player extends Character{
                 loc.getCharac().remove(HERO_ID);
                 instance.loc = dest;
                 dest.getCharac().put(HERO_ID, instance);
+                if(ek.getIsEnd()){
+                    GameHandler.getInstance().isFinished();
+                }
             }
         }else{
             loc.getCharac().remove(1);
             instance.loc = dest;
             dest.getCharac().put(HERO_ID, instance);
+            if(e.getIsEnd()){
+                    GameHandler.getInstance().isFinished();
+                }
         }
     }
 
