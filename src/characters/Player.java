@@ -144,4 +144,17 @@ public class Player extends Character{
             }
         }
     }
+
+    public void talkToNPC(String name){
+        Iterator<Map.Entry<Integer, Character>> iterator = this.loc.getCharac().entrySet().iterator();
+        while(iterator.hasNext()){
+            Map.Entry<Integer, Character> entry = iterator.next();
+            String c_name = entry.getValue().NAME;
+            if(name.equals(c_name)){
+                Npc c = (Npc)entry.getValue();
+                c.talk();
+                break;
+            }
+        }
+    }
 }

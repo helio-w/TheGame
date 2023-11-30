@@ -12,6 +12,6 @@ public class Npc extends Character{
     }
 
     public void talk(){
-        System.err.print(DIALOGUE);
+        System.out.print(DIALOGUE);
     }
 }
