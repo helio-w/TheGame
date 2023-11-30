@@ -1,8 +1,10 @@
 package map;
 import objects.Item;
 import characters.Character;
+import characters.Npc;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 public class Location{
@@ -116,5 +118,19 @@ public class Location{
         for(Item i : items.values()){
             System.out.println(i);
         }
+    }
+
+    public boolean hasNPC(String name){
+        Iterator<Map.Entry<Integer, Character>> iterator = this.getCharac().entrySet().iterator();
+        Boolean res = false;
+        while(iterator.hasNext()){
+            Map.Entry<Integer, Character> entry = iterator.next();
+            String c_name = entry.getValue().NAME;
+            if(name.equals(c_name)){
+                res = true;
+                break;
+            }
+        }
+        return res;
     }
 }
