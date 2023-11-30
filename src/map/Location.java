@@ -20,7 +20,7 @@ public class Location{
      * @param desc : Description of the location
      * @param txt : Text for the player's arrival
      */
-    public Location(String name, String desc, String txt){
+    public Location(String name, String txt, String desc){
         this.NAME = name;
         this.DESCRIPTION = desc;
         this.TXTREACH = txt;
