@@ -15,6 +15,14 @@ public class Food extends Item implements Usable{
         TXT_CHANGE = txt;
     }
 
+    /**
+     * Create a food, add it to allItems and return it
+     * @param n : name of the food
+     * @param d : description of the food
+     * @param id : id of the food (must be unique)
+     * @return return a instance of Food
+     * @throws Exception the id isn't unique
+     */
     public static Food createFood(String name, String desc, Integer id, Exit toChange, String txt) throws Exception{
         Food i = new Food(name, desc, id, toChange, txt);
         if(allItems.containsKey(id)){
@@ -25,6 +33,7 @@ public class Food extends Item implements Usable{
         }
     }
 
+    /**Applies the effect of food when consumed */
     public void use(){
         System.out.println("Yummy !");
         TO_CHANGE.setTXTCROSS(TXT_CHANGE);

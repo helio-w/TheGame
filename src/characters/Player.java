@@ -109,8 +109,8 @@ public class Player extends Character{
                 dest.getCharac().put(HERO_ID, instance);
                 System.out.println(e.txtCross); // Printing txt on console when exit is crossed 
                 System.out.print(dest.TXTREACH);
-                if(ek.getIsEnd()){
-                    GameHandler.getInstance().terminate();;
+                if(ek.getIsEnd()){ // if the exit allows you to finish the game
+                    GameHandler.getInstance().terminate();; //finish the game
                 }
             }
         }else{
@@ -158,6 +158,10 @@ public class Player extends Character{
         }
     }
 
+    /**
+     * Allows the player to talk to an NPC
+     * @param name : name of the NPC
+     */
     public void talkToNPC(String name){
         Iterator<Map.Entry<Integer, Character>> iterator = this.loc.getCharac().entrySet().iterator();
         while(iterator.hasNext()){
