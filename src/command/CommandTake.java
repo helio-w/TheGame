@@ -16,11 +16,11 @@ public class CommandTake extends Command {
 			ply.pickUpItem(args[1]);
 			return true;
 		}else if(args.length == 1) {
-			ply.pickUpItems();			return true;
+			ply.pickUpItems();			
+			return true;
 		}else {
 			Utils.printErr("Error TAKE : wrong nb of argument !");
 			return false;
 		}
-		
 	}
 }
