@@ -116,6 +116,7 @@ public class Player extends Character{
             loc.getCharac().remove(1);
             instance.loc = dest;
             dest.getCharac().put(HERO_ID, instance);
+            System.out.println(e.TXTCROSS);
             if(e.getIsEnd()){
                     GameHandler.getInstance().terminate();
                 }
