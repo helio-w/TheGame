@@ -220,7 +220,7 @@ public class GameHandler {
 				"The door opens on stair that leads downward, it's the only way to go forward so you take them", secondClinicRoom);
 		secondClinicRoom.createExit("YARD_DOOR", "toClinicYard",
 				"The hallway leads to a door, you feel the cold hair behind it.", clinicYard);
-		clinicYard.createExit("CLINIC_DOOR", "toCentralYarnham_1",
+		clinicYard.createExit("CLINIC_GATE", "toCentralYarnham_1",
 				"You take the gate.", centralYarnham_1);
 		centralYarnham_1.createExit("CONTINUE_WALKING", "toCentralYarnham_2",
 				"You continue forward on the street.", centralYarnham_2);
@@ -279,7 +279,7 @@ public class GameHandler {
 				+"<The father Gascoigne must have the key, he must be in the graveyard of the lower street.>"
 		);
 		
-		Npc.createNPC("RUDE_MAN",centralYarnham_3,1,
+		Npc.createNPC("RUDE_MAN",narrowAlley,3,
 				"<You... you're not from around here are ya ?>\n"
 				+"The man talk in a condesending way.\n"
 				+"<What a pathetic idea from an outsider to join the hunt.>"
@@ -296,10 +296,10 @@ public class GameHandler {
 		/* End of NPC init */
 
 		/* Items init */
-		Item itemNote = Item.createItem("Note", "It is written : Seek paleblood to transcend the hunt", 0);
+		Item itemNote = Item.createItem("NOTE", "It is written : Seek paleblood to transcend the hunt", 0);
 		firstClinicRoom.addItemLoc(itemNote);
 
-		Item itemKey = Item.createItem("CathedralKey", "An elegant key, surely to open an important door", 1);
+		Item itemKey = Item.createItem("CATHEDRALE_KEY", "An elegant key, surely to open an important door", 1);
 		graveyard.addItemLoc(itemKey);
 
 		Item UMBILICAL_CORD = Food.createFood("UMBILICAL_CORD", "Every Great One loses its child, and then yearns for a surrogate",2, topOfCathedrale.getExits().get("STOP_THE_BOX"),
@@ -317,7 +317,7 @@ public class GameHandler {
 		insideCathedrale.addItemLoc(UMBILICAL_CORD);
 		/* End of items init*/
 
-		GameHandler theGame = GameHandler.createInstance(firstClinicRoom, "You");		// The cake is a lie
+		GameHandler theGame = GameHandler.createInstance(narrowAlley, "You");		// The cake is a lie
 		theGame.startGame();
 	}
 }
