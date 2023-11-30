@@ -139,6 +139,9 @@ public class Location{
     }
 
     public void exitEnd(String name){
-        this.exits.get(name).end();
+        Exit e = this.exits.get(name);
+        Exit e2 = e.DEST.exits.get(name);
+        e.end();
+        e2.end();
     }
 }
