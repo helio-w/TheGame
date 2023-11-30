@@ -151,8 +151,9 @@ public class Player extends Character{
         while(iterator.hasNext()){
             Map.Entry<Integer, Character> entry = iterator.next();
             String i_name = entry.getValue().NAME;
-            if(name == i_name){
+            if(name.equals(i_name)){
                 entry.getValue().hp = 0;
+                System.out.println("You attack "+entry.getValue().NAME+" !");
                 break;
             }
         }
@@ -169,8 +170,13 @@ public class Player extends Character{
             String c_name = entry.getValue().NAME;
             if(name.equals(c_name)){
                 Npc c = (Npc)entry.getValue();
-                c.talk();
-                break;
+                if(c.hp > 0){
+                    c.talk();
+                    break;
+                }else{
+                    System.out.println("You can't talk to a corpses.");
+                    break;
+                }
             }
         }
     }
