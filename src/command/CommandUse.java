@@ -1,7 +1,5 @@
 package command;
 
-import java.util.Map;
-
 import characters.Player;
 import game.GameHandler;
 

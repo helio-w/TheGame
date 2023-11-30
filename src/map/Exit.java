@@ -5,7 +5,7 @@ public class Exit {
     public final String NAME;
     public final Location DEST;
     public final Location LOC;
-    public final String TXTCROSS;
+    public String txtCross;
     private boolean isEnd = false;
 
     /**
@@ -20,7 +20,7 @@ public class Exit {
         this.NAME = name;
         this.DEST = dest;
         this.LOC = loc;
-        this.TXTCROSS = txt;
+        this.txtCross = txt;
     }
 
     public void end(){
@@ -33,5 +33,9 @@ public class Exit {
 
     public String toString(){
         return "\tName : "+this.NAME+"\n\tDestination : "+this.DEST.NAME+"\n\tDescription : "+this.DESCRIPTION +"\n";
+    }
+
+    public void setTXTCROSS(String txt){
+        this.txtCross = txt;
     }
 }

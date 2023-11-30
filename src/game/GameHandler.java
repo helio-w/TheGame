@@ -96,7 +96,7 @@ public class GameHandler {
 	}
 	
 	public void takeExit(Exit e) {
-		System.out.println(e.TXTCROSS);
+		System.out.println(e.txtCross);
 		this.changeMap(e.DEST);
 	}
 	
@@ -260,19 +260,45 @@ public class GameHandler {
 		insideCathedrale.createExit("STAIRS_TO_TOP", "toTopCathedrale",
 				"You take the stairs to the top", topOfCathedrale);
 		topOfCathedrale.createExit("STOP_THE_BOX", "stopTheBox",
-				"You take the stair to the top", stopingTheBox);
-		End.createExit("LEAVE_IN_THE_FOREST", "Leave Yarnham through the forest",
+				"Go stop the music box", stopingTheBox);
+		centralYarnham_5.createExit("LEAVE_IN_THE_FOREST", "Leave Yarnham through the forest",
 				"You take the path into the wood, you don't know where it will lead you, but at least it will be out of Yarnham.\n"
 				+"As the moon rise in the sky, you think to yourself that it will be a long night.\n"
-				+"One that you will maybe not see the end.", centralYarnham_5);
+				+"One that you will maybe not see the end.\n", End);
 		End.exitEnd("LEAVE_IN_THE_FOREST");
 		/* End of exits init */
 		
 		/* NPC Init */
+		Npc.createNPC("WINDOW_MAN",centralYarnham_3,0,
+				"<Ha... so there is a hunter patrolling the street.>\n"
+				+"Your hear the man coughing.\n"
+				+"<Sorry i don't seem to be in good shape, but at least the blood therapy made me last longer than i expected.>\n"
+				+"You explain yourself to the man.\n"
+				+"<Ho you are a stranger, like me, everything must seem strange to you.>\n"
+				+"The man cough again.\n"
+				+"<I can't help you much with my condition but, if you want to have a chance of leaving alive you need to go in the healing cathedrale.>\n"
+				+"<The father Gascoigne must have the key, he must be in the graveyard of the lower street.>"
+		);
 		
-		/* End of NPC init */
+		Npc.createNPC("RUDE_MAN",centralYarnham_3,1,
+				"<You... you're not from around here are ya ?>\n"
+				+"The man talk in a condesending way.\n"
+				+"<What a pathetic idea from an outsider to join the hunt.>"
+		);
 
-		GameHandler theGame = GameHandler.createInstance(centralYarnham_5, "You");		// The cake is a lie
+		Npc.createNPC("LITLLE_GIRL",centralYarnham_5,2,
+				"<Hello... are you a hunter ? Then please will you look for my mum she went to look for my dad but she never came back.>\n"
+				+"You don't have the feeling that the dad or the mum are in safety.\n"
+				+"<My mum said that she will look at the graveyard since my father is usualy there during the hunt.>\n"
+				+"<My mother name is Viola and my father is Gascoigne can you tell them to come back.>\n"
+				+"You said to the little girl that you will go look for them.\n"
+				+"But you think to yourself that if the news is bad it maybe better not to tell her, it's not the best time to go outside of your house because of sadness.\n"
+		);
+		/* End of NPC init */
+		Item UMBILICAL_CORD = Food.createFood("UMBILICAL_CORD", "YOLOOOOOOOOOOOOOOOOO",2, topOfCathedrale.getExits().get("STOP_THE_BOX"), "SA MARCHE");
+		topOfCathedrale.addItemLoc(UMBILICAL_CORD);
+
+		GameHandler theGame = GameHandler.createInstance(topOfCathedrale, "You");		// The cake is a lie
 		theGame.startGame();
 	}
 }

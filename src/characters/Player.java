@@ -107,7 +107,8 @@ public class Player extends Character{
                 loc.getCharac().remove(HERO_ID);
                 instance.loc = dest;
                 dest.getCharac().put(HERO_ID, instance);
-                System.out.println(e.TXTCROSS); // Printing txt on console when exit is crossed 
+                System.out.println(e.txtCross); // Printing txt on console when exit is crossed 
+                System.out.print(dest.TXTREACH);
                 if(ek.getIsEnd()){
                     GameHandler.getInstance().terminate();;
                 }
@@ -116,7 +117,8 @@ public class Player extends Character{
             loc.getCharac().remove(1);
             instance.loc = dest;
             dest.getCharac().put(HERO_ID, instance);
-            System.out.println(e.TXTCROSS);
+            System.out.println(e.txtCross);
+            System.out.print(dest.TXTREACH);
             if(e.getIsEnd()){
                     GameHandler.getInstance().terminate();
                 }
