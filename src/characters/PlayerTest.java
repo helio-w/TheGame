@@ -88,8 +88,8 @@ public class PlayerTest {
 
             p.inventory.put(i.ID, i);
             p.inventory.put(i2.ID, i2);
-            p.use(i.NAME);
-            p.use(i2.NAME);
+            p.useItem(i.NAME);
+            p.useItem(i2.NAME);
             
             assertFalse(p.inventory.containsKey(i.ID));
             assertTrue(p.inventory.containsKey(i2.ID));

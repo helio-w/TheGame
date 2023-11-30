@@ -114,12 +114,13 @@ public class Player extends Character{
      * Allows the player to eat if the item used is an instance of Food
      * @param name : name of the item
      */
-    public void use(String name){
+    public void useItem(String name){
         Iterator<Map.Entry<Integer, Item>> iterator = this.inventory.entrySet().iterator();
         while(iterator.hasNext()){
             Map.Entry<Integer, Item> entry = iterator.next();
             String i_name = entry.getValue().NAME;
-            if(name == i_name && entry.getValue() instanceof Food){
+            if(name == i_name && entry.getValue() instanceof Usable){
+                ((Usable)entry.getValue()).use();
                 iterator.remove();
                 break;
             }
