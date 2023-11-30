@@ -50,10 +50,10 @@ public class CommandHandler {
 	}
 	
 	public void commandParser() {
-		Utils.printDash(66);
+		Utils.printDash(1);
 		System.out.print("~> ");
 		String command = this.scan.nextLine();
-		Utils.printDash(66);
+		Utils.printDash(1);
 
 		this.execute(command);
 	}

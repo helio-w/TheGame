@@ -12,12 +12,11 @@ public class CommandGo extends Command{
 	}
 	
 	public boolean execute(String[] args) {
-		Location curLoc = theGame.currentLoc;
+		Location curLoc = theGame.getPlayer().loc;
 		Map<String, Exit> exits = curLoc.getExits(); 					// Get the HashMap of Exits
 		if(args.length == 2) {
 			if(exits.containsKey(args[1].toUpperCase())) {				// Checking if Str in args[1] is a valid exit name
-				Exit exitTaken = exits.get(args[1].toUpperCase());
-				theGame.takeExit(exitTaken);
+				theGame.getPlayer().move(args[1]);
 				// TODO Implement lockedExit	
 				return true;
 			}else {
