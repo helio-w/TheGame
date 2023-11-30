@@ -4,7 +4,7 @@ import java.util.Map;
 
 import map.Location;
 
-public class Character{
+public abstract class Character{
     public final String NAME;           // Name of the caracter
     public int hp;                // Health point of the caracter
     public Location loc;
@@ -25,19 +25,7 @@ public class Character{
         this.loc = l;
         this.ID = id;
     }
-
-    /**Create a character, add it in allCharac and return it */
-    public static Character createCharac(String n, int hp, Location l, Integer id) throws Exception{
-        Character i = new Character(n, hp, l, id);
-        if(allCharac.containsKey(id)){
-            throw new Exception("Error createCharac : item id already in allCharac");
-        }else{
-            allCharac.put(id, i);
-            l.getCharac().put(id, i);
-            return i;
-        }
-    }
-
+    
     public String toString(){
         return "\tnom : "+this.NAME;
     }

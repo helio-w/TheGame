@@ -103,7 +103,7 @@ public class PlayerTest {
         try{
             Location l1 = new Location("L1", "Sortie(s) dispo : L2", "");
             Player p = Player.getPlayer("Hero", l1);
-            Character c = Character.createCharac("john", 20, l1, 2);
+            Npc c = Npc.createNPC("john", l1, 2, "HAHAHAHAHHA !!!");
             p.attack("john");
             assertTrue(c.hp == 0);
         }catch(Exception e){
