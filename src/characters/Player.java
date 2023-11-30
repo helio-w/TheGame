@@ -54,6 +54,7 @@ public class Player extends Character{
                 Map.Entry<Integer, Item> entry = iterator.next();
                 Item i = entry.getValue();
                 this.inventory.put(i.ID, i);
+                System.out.println("You have picked up : "+i.NAME);
                 iterator.remove();
             }
         }
@@ -68,6 +69,7 @@ public class Player extends Character{
             if(name.equals(i_name)){
                 Item i = entry.getValue();
                 this.inventory.put(i.ID, i);
+                System.out.println("You have picked up : "+i.NAME);
                 iterator.remove();
                 break;
             }
