@@ -196,10 +196,12 @@ public class GameHandler {
 		);
 		Location insideCathedrale = new Location("InsideCathedrale",
 				"As you enter the cathedral the air become stagnant it's like time stoped moving.\n"
-				+"You walk in the long hallway of the building seeing stage statues, three man embalming a body, people covering their eyes.\n"
+				+"You walk in the long hallway of the building seeing strange statues, three man embalming a body, people covering their eyes,...\n"
 				+"In one giant room you even encounter an altar where a giant beast skull is resting.\n"
 				+"The silence is growing more and more, as you have the constent fealing of being watched by someone, but their is only the moon gasing you through the windows.\n",
-				"Do you really want to look for more disturbing things ?"
+				"In a little medical room just before the stairs you see the dead bodie of a woman.\n"
+				+"Her skin white as the moon, but her dress is bloodstained.\n"
+				+"Beside her, on a table, something caught your eyes."
 		);
 		Location topOfCathedrale = new Location("TopOfCathedrale",
 				"You finally arrive on the roof of the cathedrale, and as you walk the last stair, an unreal scene appear in front of you.\n"
@@ -208,23 +210,10 @@ public class GameHandler {
 				+"You hear from it emanating the faint sound of a music box, but nothing else.\n",
 				"You are already looking"
 		);
-		Location stopingTheBox = new Location("StopingTheBox",
-				"You approched the baby carriage.\n"
-				+"The music box at the center don't seem to end. You stand here hesitant to do anything.\n"
-				+"And slowly you take the music box out of the pram, instantly stoping the melody.\n"
-				+"After of few moment of silence your hear the cry of a baby... and then nothing.\n",
-				"The moon is looking" // LA EN VRAI SA DEVRAI DECLANCHER DEUX DES 3 FIN ET DONC PAS DE LOOK
-		);
+		Location stopingTheBox = new Location("StopingTheBox","End.\n","This is the end");
 		Location End = new Location("End","End.\n","This is the end");
 
 		/* End of locations init */
-
-		/* Items init */
-		Item itemNote = Item.createItem("Note", "It is written : Seek paleblood to transcend the hunt", 0);
-		firstClinicRoom.addItemLoc(itemNote);
-		Item itemKey = Item.createItem("CathedralKey", "An elegant key, surely to open an important door", 1);
-		graveyard.addItemLoc(itemKey);
-		/* End of items init*/
 
 		/* Exits init */
 		firstClinicRoom.createExit("CLINIC_DOOR", "toSecondClinicRoom",
@@ -260,12 +249,22 @@ public class GameHandler {
 		insideCathedrale.createExit("STAIRS_TO_TOP", "toTopCathedrale",
 				"You take the stairs to the top", topOfCathedrale);
 		topOfCathedrale.createExit("STOP_THE_BOX", "stopTheBox",
-				"Go stop the music box", stopingTheBox);
+				"You approched the baby carriage.\n"
+				+"The music box at the center don't seem to end. You stand here hesitant to do anything.\n"
+				+"And slowly you take the music box out of the pram, instantly stoping the melody.\n"
+				+"After of few moment of silence your hear the cry of a baby... and then nothing.\n \n"
+				+"The scene around you start start to glow brighter, and as you look back to the moon, you notice that it bright now in a redish color.\n"
+				+"Then... slowly... you notice a being descending from the sky, as if it as always been there.\n"
+				+"The look of the creature is absurd, a gigantic spine with multiple ribcages along side it, long stretching arms and legs, and as a face you only see a grotesque shape with a hole at its center and tentacles floating behind.\n"
+				+"It gracefully set foot on the floor, extend his arms, and take you in it's grasp.\n"
+				+"As it's head make contact with your body, it's tentacles envelop you, and you slowly fall asleep."
+				, stopingTheBox);
 		centralYarnham_5.createExit("LEAVE_IN_THE_FOREST", "Leave Yarnham through the forest",
 				"You take the path into the wood, you don't know where it will lead you, but at least it will be out of Yarnham.\n"
 				+"As the moon rise in the sky, you think to yourself that it will be a long night.\n"
 				+"One that you will maybe not see the end.\n", End);
 		End.exitEnd("LEAVE_IN_THE_FOREST");
+		End.exitEnd("STOP_THE_BOX");
 		/* End of exits init */
 		
 		/* NPC Init */
@@ -295,10 +294,30 @@ public class GameHandler {
 				+"But you think to yourself that if the news is bad it maybe better not to tell her, it's not the best time to go outside of your house because of sadness.\n"
 		);
 		/* End of NPC init */
-		Item UMBILICAL_CORD = Food.createFood("UMBILICAL_CORD", "YOLOOOOOOOOOOOOOOOOO",2, topOfCathedrale.getExits().get("STOP_THE_BOX"), "SA MARCHE");
-		topOfCathedrale.addItemLoc(UMBILICAL_CORD);
 
-		GameHandler theGame = GameHandler.createInstance(topOfCathedrale, "You");		// The cake is a lie
+		/* Items init */
+		Item itemNote = Item.createItem("Note", "It is written : Seek paleblood to transcend the hunt", 0);
+		firstClinicRoom.addItemLoc(itemNote);
+
+		Item itemKey = Item.createItem("CathedralKey", "An elegant key, surely to open an important door", 1);
+		graveyard.addItemLoc(itemKey);
+
+		Item UMBILICAL_CORD = Food.createFood("UMBILICAL_CORD", "Every Great One loses its child, and then yearns for a surrogate",2, topOfCathedrale.getExits().get("STOP_THE_BOX"),
+				"You approched the baby carriage.\n"
+				+"The music box at the center don't seem to end. You stand here hesitant to do anything.\n"
+				+"And slowly you take the music box out of the pram, instantly stoping the melody.\n"
+				+"After of few moment of silence your hear the cry of a baby... and then nothing.\n \n"
+				+"The scene around you start start to glow brighter, and as you look back to the moon, you notice that it bright now in a redish color.\n"
+				+"Then... slowly... you notice a being descending from the sky, as if it as always been there.\n"
+				+"The look of the creature is absurd, a gigantic spine with multiple ribcages along side it, long stretching arms and legs, and as a face you only see a grotesque shape with a hole at its center and tentacles floating behind.\n"
+				+"It gracefully set foot on the floor, extend his arms, and take you in it's grasp.\n"
+				+"As it's head make contact with your body, it's tentacles envelop you.\n"
+				+"But suddenly it seem to be repulse by you, shaking it's head violently.\n"
+				+"It take a few step back falling on the ground, and as the being rest here, you fall suddenly asleep.");
+		insideCathedrale.addItemLoc(UMBILICAL_CORD);
+		/* End of items init*/
+
+		GameHandler theGame = GameHandler.createInstance(firstClinicRoom, "You");		// The cake is a lie
 		theGame.startGame();
 	}
 }
