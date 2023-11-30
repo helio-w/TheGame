@@ -1,7 +1,6 @@
 package map;
 import objects.Item;
 import characters.Character;
-import characters.Npc;
 
 import java.util.HashMap;
 import java.util.Iterator;

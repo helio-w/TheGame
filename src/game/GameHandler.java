@@ -215,6 +215,7 @@ public class GameHandler {
 				+"After of few moment of silence your hear the cry of a baby... and then nothing.\n",
 				"The moon is looking" // LA EN VRAI SA DEVRAI DECLANCHER DEUX DES 3 FIN ET DONC PAS DE LOOK
 		);
+		Location End = new Location("End","End.\n","This is the end");
 
 		/* End of locations init */
 
@@ -260,13 +261,18 @@ public class GameHandler {
 				"You take the stairs to the top", topOfCathedrale);
 		topOfCathedrale.createExit("STOP_THE_BOX", "stopTheBox",
 				"You take the stair to the top", stopingTheBox);
+		centralYarnham_5.createExit("LEAVE_IN_THE_FOREST", "Leave Yarnham through the forest",
+				"You take the path into the wood, you don't know where it will lead you, but at least it will be out of Yarnham.\n"
+				+"As the moon rise in the sky, you think to yourself that it will be a long night.\n"
+				+"One that you will maybe not see the end.", End);
+		End.exitEnd("LEAVE_IN_THE_FOREST");
 		/* End of exits init */
 		
 		/* NPC Init */
 		
 		/* End of NPC init */
 
-		GameHandler theGame = GameHandler.createInstance(firstClinicRoom, "You");		// The cake is a lie
+		GameHandler theGame = GameHandler.createInstance(bridge, "You");		// The cake is a lie
 		theGame.startGame();
 	}
 }
