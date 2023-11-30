@@ -261,10 +261,10 @@ public class GameHandler {
 				"You take the stairs to the top", topOfCathedrale);
 		topOfCathedrale.createExit("STOP_THE_BOX", "stopTheBox",
 				"You take the stair to the top", stopingTheBox);
-		centralYarnham_5.createExit("LEAVE_IN_THE_FOREST", "Leave Yarnham through the forest",
+		End.createExit("LEAVE_IN_THE_FOREST", "Leave Yarnham through the forest",
 				"You take the path into the wood, you don't know where it will lead you, but at least it will be out of Yarnham.\n"
 				+"As the moon rise in the sky, you think to yourself that it will be a long night.\n"
-				+"One that you will maybe not see the end.", End);
+				+"One that you will maybe not see the end.", centralYarnham_5);
 		End.exitEnd("LEAVE_IN_THE_FOREST");
 		/* End of exits init */
 		
@@ -272,7 +272,7 @@ public class GameHandler {
 		
 		/* End of NPC init */
 
-		GameHandler theGame = GameHandler.createInstance(bridge, "You");		// The cake is a lie
+		GameHandler theGame = GameHandler.createInstance(centralYarnham_5, "You");		// The cake is a lie
 		theGame.startGame();
 	}
 }
