@@ -65,7 +65,7 @@ public class Player extends Character{
         while(iterator.hasNext()){
             Map.Entry<Integer, Item> entry = iterator.next();
             String i_name = entry.getValue().NAME;
-            if(name == i_name){
+            if(name.equals(i_name)){
                 Item i = entry.getValue();
                 this.inventory.put(i.ID, i);
                 iterator.remove();
