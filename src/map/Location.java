@@ -138,6 +138,10 @@ public class Location{
         return res;
     }
 
+    /**
+     * Modifies the exit of a location so that it can finish the game
+     * @param name : name fo the exit
+     */
     public void exitEnd(String name){
         Exit e = this.exits.get(name);
         Exit e2 = e.DEST.exits.get(name);
