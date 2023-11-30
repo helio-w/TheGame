@@ -18,6 +18,7 @@ public abstract class Character{
      * @param name : name of the character
      * @param hp : amount of health point of the character
      * @param l : location of the character
+     * @param id : id of the character
      */
     protected Character(String name, int hp, Location l, Integer id){
         this.NAME = name;

@@ -108,7 +108,7 @@ public class Player extends Character{
                 instance.loc = dest;
                 dest.getCharac().put(HERO_ID, instance);
                 if(ek.getIsEnd()){
-                    GameHandler.getInstance().isFinished();
+                    GameHandler.getInstance().terminate();;
                 }
             }
         }else{
@@ -116,7 +116,7 @@ public class Player extends Character{
             instance.loc = dest;
             dest.getCharac().put(HERO_ID, instance);
             if(e.getIsEnd()){
-                    GameHandler.getInstance().isFinished();
+                    GameHandler.getInstance().terminate();
                 }
         }
     }
