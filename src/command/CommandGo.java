@@ -17,7 +17,6 @@ public class CommandGo extends Command{
 		if(args.length == 2) {
 			if(exits.containsKey(args[1].toUpperCase())) {						// Checking if Str in args[1] is a valid exit name (every exit is upper case)
 				theGame.getPlayer().move(args[1].toUpperCase());
-				System.out.println(exits.get(args[1].toUpperCase()).TXTCROSS); 	// Printing txt on console when exit is crossed
 				return true;
 			}else {
 				Utils.printErr("Error GO : The Destination does not exist !");

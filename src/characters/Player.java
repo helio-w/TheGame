@@ -107,6 +107,7 @@ public class Player extends Character{
                 loc.getCharac().remove(HERO_ID);
                 instance.loc = dest;
                 dest.getCharac().put(HERO_ID, instance);
+                System.out.println(e.TXTCROSS); // Printing txt on console when exit is crossed 
                 if(ek.getIsEnd()){
                     GameHandler.getInstance().terminate();;
                 }
