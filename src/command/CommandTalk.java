@@ -1,4 +1,4 @@
-/*package command;
+package command;
 
 import game.GameHandler;
 import map.Location;
@@ -33,4 +33,4 @@ public class CommandTalk extends Command {
 			return false;
 		}
 	}
-}*/
+}
