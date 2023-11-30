@@ -138,4 +138,8 @@ public class Location{
         }
         return res;
     }
+
+    public void exitEnd(String name){
+        this.exits.get(name).end();
+    }
 }
