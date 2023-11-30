@@ -134,7 +134,7 @@ public class Player extends Character{
         while(iterator.hasNext()){
             Map.Entry<Integer, Item> entry = iterator.next();
             String i_name = entry.getValue().NAME;
-            if(name == i_name && entry.getValue() instanceof Usable){
+            if(name.equals(i_name) && entry.getValue() instanceof Usable){
                 ((Usable)entry.getValue()).use();
                 iterator.remove();
                 break;
