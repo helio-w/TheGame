@@ -168,4 +168,23 @@ public class Player extends Character{
             }
         }
     }
+
+    /**
+     * Indicates whether the item exists in the player's inventory
+     * @param name : name of the item
+     * @return true if this is the case, false otherwise
+     */
+    public boolean hasItem(String name){
+        Iterator<Map.Entry<Integer, Item>> iterator = this.inventory.entrySet().iterator();
+        Boolean res = false;
+        while(iterator.hasNext()){
+            Map.Entry<Integer, Item> entry = iterator.next();
+            String c_name = entry.getValue().NAME;
+            if(name.equals(c_name)){
+                res = true;
+                break;
+            }
+        }
+        return res;
+    }
 }
