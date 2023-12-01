@@ -10,7 +10,6 @@ public class GameHandler {
 	private static GameHandler instance; 	// GameHandler is a singleton
 	
 	private final Player PLAYER;			// Player pointer to check HP and pass to commandHandler
-	public Location currentLoc;			// CurrentLoc to pass to commandHandler
 	
 	// Constructor are private to avoid external creation of any other instance
 	private GameHandler() {
@@ -18,7 +17,6 @@ public class GameHandler {
 		 * 		Init of map
 		 */
 		Location startMap = new Location("startMap", "Nothing to see here", "Just a rnd start map !");
-		this.currentLoc = startMap; 	// Setting current Location to startMap
 			
 		/*
 		 * 		Creating instance of player at the beginning of the game
@@ -29,7 +27,6 @@ public class GameHandler {
 	
 	private GameHandler(Location startMap, String playerName) {
 		this.PLAYER = Player.getPlayer(playerName, startMap);
-		this.currentLoc = startMap;
 	}
 	
 	
@@ -67,7 +64,7 @@ public class GameHandler {
 			+"You lounged yourself in the bed looking at the blood that will soon run in your veins.\n"
 			+"<Oh, don't you worry. Whatever happens... You may think it all a mere bad dream...>\n"
 			+"You fall into a deep sleep.\n");
-		System.out.print(this.currentLoc.TXTREACH);
+		System.out.print(this.PLAYER.loc.TXTREACH);
 		while(!this.isFinished) {
 			cmdHdl.commandParser();
 		}
@@ -90,18 +87,9 @@ public class GameHandler {
 		return this.PLAYER;
 	}
 	
-	public void changeMap(Location l) {
-		this.currentLoc = l;
-		System.out.print(this.currentLoc.TXTREACH);
-	}
-	
-	public void takeExit(Exit e) {
-		System.out.println(e.txtCross);
-		this.changeMap(e.DEST);
-	}
-	
 	/*
-	 * 		Main for tinkering
+	 * 		Main method. 
+	 * 		Story, Location, NPC, Items are initialized here.
 	 */
 	
 	public static void main(String[] args) throws Exception {
